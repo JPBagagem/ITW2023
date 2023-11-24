@@ -1,0 +1,21 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 60px;
+    margin-top: 60px
+}
+nav {
+    background-color: rgb(29, 67, 140);
+
+}
+.icon {
+    height: 36px;
+    width: 64px;
+}
+.white {
+    color: white;
+    margin: 0px 0px 0px 20px;
+}
+
+.rodape {
+    background-color: rgb(29, 67, 140);
+}
