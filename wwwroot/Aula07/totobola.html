@@ -1,0 +1,184 @@
+﻿
+    ﻿<!DOCTYPE html>
+    <html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300">
+        <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="ex4.css" rel="stylesheet" />
+        <title>Aula07 - Exercício 4 - Totobola</title>
+        <style>
+            ﻿body {
+                font-family: "Open Sans", sans-serif;
+            }
+
+            div.bannerTop {
+                height: 480px;
+                margin: auto;
+                border-bottom: solid 1px #444;
+                border-top: solid 1px #444;
+                background-image: url('data:image/jpeg;base64,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');
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="bannerTop"></div>
+        <div class="container">
+            <form action="http://192.168.160.36/FormEcho.aspx" method="post">
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th class="">Jogo</th>
+                            <th class="">1</th>
+                            <th class="">X</th>
+                            <th class="">2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1</strong> Sporting-Arouca</td>
+                            <td><input type="checkbox" ID="Jogo1_1" name="Jogo1_1" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo1_x" name="Jogo1_x" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo1_2" name="Jogo1_2" onclick="boxClicked(this)"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>2</strong> Estoril-Tondela</td>
+                            <td><input type="checkbox" ID="Jogo2_1" name="Jogo2_1" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo2_x" name="Jogo2_x" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo2_2" name="Jogo2_2" onclick="boxClicked(this)"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>3</strong> Moreirense-V. Setúbal</td>
+                            <td><input type="checkbox" ID="Jogo3_1" name="Jogo3_1" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo3_x" name="Jogo3_x" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo3_2" name="Jogo3_2" onclick="boxClicked(this)"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>4</strong> Feirense-Belenenses</td>
+                            <td><input type="checkbox" ID="Jogo4_1" name="Jogo4_1" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo4_x" name="Jogo4_x" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo4_2" name="Jogo4_2" onclick="boxClicked(this)"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>5</strong> Rio Ave-Boavista</td>
+                            <td><input type="checkbox" ID="Jogo5_1" name="Jogo5_1" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo5_x" name="Jogo5_x" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo5_2" name="Jogo5_2" onclick="boxClicked(this)"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>6</strong> Marítimo-Braga</td>
+                            <td><input type="checkbox" ID="Jogo6_1" name="Jogo6_1" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo6_x" name="Jogo6_x" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo6_2" name="Jogo6_2" onclick="boxClicked(this)"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>7</strong> P. Ferreira-Chaves</td>
+                            <td><input type="checkbox" ID="Jogo7_1" name="Jogo7_1" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo7_x" name="Jogo7_x" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo7_2" name="Jogo7_2" onclick="boxClicked(this)"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>8</strong> Gil Vicente-Portimon.</td>
+                            <td><input type="checkbox" ID="Jogo8_1" name="Jogo8_1" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo8_x" name="Jogo8_x" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo8_2" name="Jogo8_2" onclick="boxClicked(this)"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>9</strong> Freamu.-Leixões</td>
+                            <td><input type="checkbox" ID="Jogo9_1" name="Jogo9_1" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo9_x" name="Jogo9_x" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo9_2" name="Jogo9_2" onclick="boxClicked(this)"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>10</strong> Famalicão-Fafe</td>
+                            <td><input type="checkbox" ID="Jogo10_1" name="Jogo10_1" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo10_x" name="Jogo10_x" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo10_2" name="Jogo10_2" onclick="boxClicked(this)"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>11</strong> Arsenal-Tottenham</td>
+                            <td><input type="checkbox" ID="Jogo11_1" name="Jogo11_1" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo11_x" name="Jogo11_x" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo11_2" name="Jogo11_2" onclick="boxClicked(this)"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>12</strong> Celta-Valência</td>
+                            <td><input type="checkbox" ID="Jogo12_1" name="Jogo12_1" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo12_x" name="Jogo12_x" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo12_2" name="Jogo12_2" onclick="boxClicked(this)"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>13</strong> Fiorentina-Sampdória</td>
+                            <td><input type="checkbox" ID="Jogo13_1" name="Jogo13_1" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo13_x" name="Jogo13_x" onclick="boxClicked(this)"></td>
+                            <td><input type="checkbox" ID="Jogo13_2" name="Jogo13_2" onclick="boxClicked(this)"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th colspan="30">Múltiplas:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="radio" ID="multiplas2" name="multiplas" value="2" /><br />2</td>
+                                <td><input type="radio" ID="multiplas3" name="multiplas" value="3" /><br />3</td>
+                                <td><input type="radio" ID="multiplas4" name="multiplas" value="4" /><br />4</td>
+                                <td><input type="radio" ID="multiplas6" name="multiplas" value="6" /><br />6</td>
+                                <td><input type="radio" ID="multiplas8" name="multiplas" value="8" /><br />8</td>
+                                <td><input type="radio" ID="multiplas9" name="multiplas" value="9" /><br />9</td>
+                                <td><input type="radio" ID="multiplas12" name="multiplas" value="12" /><br />12</td>
+                                <td><input type="radio" ID="multiplas16" name="multiplas" value="16" /><br />16</td>
+                                <td><input type="radio" ID="multiplas18" name="multiplas" value="18" /><br />18</td>
+                                <td><input type="radio" ID="multiplas24" name="multiplas" value="24" /><br />24</td>
+                                <td><input type="radio" ID="multiplas27" name="multiplas" value="27" /><br />27</td>
+                                <td><input type="radio" ID="multiplas32" name="multiplas" value="32" /><br />32</td>
+                                <td><input type="radio" ID="multiplas36" name="multiplas" value="36" /><br />36</td>
+                                <td><input type="radio" ID="multiplas48" name="multiplas" value="48" /><br />48</td>
+                                <td><input type="radio" ID="multiplas54" name="multiplas" value="54" /><br />54</td>
+                                <td><input type="radio" ID="multiplas64" name="multiplas" value="64" /><br />64</td>
+                                <td><input type="radio" ID="multiplas72" name="multiplas" value="72" /><br />72</td>
+                                <td><input type="radio" ID="multiplas81" name="multiplas" value="81" /><br />81</td>
+                                <td><input type="radio" ID="multiplas96" name="multiplas" value="96" /><br />96</td>
+                                <td><input type="radio" ID="multiplas108" name="multiplas" value="108" /><br />108</td>
+                                <td><input type="radio" ID="multiplas128" name="multiplas" value="128" /><br />128</td>
+                                <td><input type="radio" ID="multiplas144" name="multiplas" value="144" /><br />144</td>
+                                <td><input type="radio" ID="multiplas162" name="multiplas" value="162" /><br />162</td>
+                                <td><input type="radio" ID="multiplas192" name="multiplas" value="192" /><br />192</td>
+                                <td><input type="radio" ID="multiplas216" name="multiplas" value="216" /><br />216</td>
+                                <td><input type="radio" ID="multiplas243" name="multiplas" value="243" /><br />243</td>
+                                <td><input type="radio" ID="multiplas256" name="multiplas" value="256" /><br />256</td>
+                                <td><input type="radio" ID="multiplas288" name="multiplas" value="288" /><br />288</td>
+                                <td><input type="radio" ID="multiplas324" name="multiplas" value="324" /><br />324</td>
+                                <td><input type="radio" ID="multiplas384" name="multiplas" value="384" /><br />384</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <hr />
+                    <div class="col-md-3">1's: <span ID="Status1"></span></div>
+                    <div class="col-md-3">X's: <span ID="StatusX"></span></div>
+                    <div class="col-md-3">2's: <span ID="Status2"></span></div>
+                    <div class="col-md-3">
+                        <input type="submit" class="" id="botao" value="Jogar" disabled="disabled" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script src="../lib/jquery/dist/jquery.min.js"></script>
+        <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="totobola.js"></script>
+    </body>
+</html>

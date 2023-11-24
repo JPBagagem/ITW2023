@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ITW2023.props" />
+</Project>

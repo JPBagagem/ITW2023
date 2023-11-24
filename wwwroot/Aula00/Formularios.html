@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin-top: 5px
+        }
+
+        div {
+            width: auto
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center">Formulário</h1>
+    <forms name="PersonData" action="http://192.168.160.36/FormEcho.aspx" method="post">
+        <fieldset>
+            <legend>Nome completo</legend>
+            <div style="float: left; text-align: left">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" style="width: 400px" placeholder="Nome" />
+            </div>
+            <div style="float: right; text-align: right">
+                <label for="apelido">Apelido</label>
+                <input type="text" name="apelido" id="apelido" style="width: 400px" placeholder="Apelido" />
+            </div>
+            <select id="curso" style="width: 100%">
+                <option value="1">Engenharia Informática</option>
+                <option value="2">Engenharia Informática B</option>
+                <option value="3">Curso ranhoso</option>
+            </select>
+        </fieldset>
+        <input type="radio" name="cor" value="azul" />Azul
+        <input type="radio" name="cor" value="verde" />Verde
+        <input type="radio" name="cor" value="vermelho" />Vermelho
+        <textarea name="descricao" placeholder="Descreva a sua personalidade" style="width: 100%; height: 100px"></textarea>
+        <input type="submit" value="Submeter" onclick="return validatecor()" />
+        <script src="Validacao.js"></script>
+    </forms>
+    </body>
+    </html>
