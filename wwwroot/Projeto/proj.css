@@ -19,3 +19,10 @@ nav {
 .rodape {
     background-color: rgb(29, 67, 140);
 }
+
+.banner{
+    margin: auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
