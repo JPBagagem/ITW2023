@@ -36,3 +36,7 @@
 li.page-item a {
     font-size: 0.85rem;
 }
+
+nav {
+    background-color: rgb(29, 67, 140);
+}
