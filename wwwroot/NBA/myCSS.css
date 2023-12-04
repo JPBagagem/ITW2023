@@ -45,3 +45,14 @@ li.page-item a {
 .rednav {
     background-color: rgb(203, 15, 40);
 }
+
+.sidetext{
+    border-radius: 25px;
+    background: #bac5b2;
+    padding: 20px;
+}
+
+.redes_sociais{
+    margin: 20px 5px 20px 5px;
+    height: 48px; 
+}
