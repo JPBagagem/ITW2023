@@ -41,9 +41,10 @@
             <div class="row">
                 <h2 data-bind="text:displayName"></h2> 
                 <div style="position: relative;">
-                    <input type="text" placeholder="Procurar arena" id="searchbar" data-bind="event: {keypress: onEnter}" >
-                    <button style="margin-left: 1px;" class="fa fa-search btn btn-outline-danger" id="driverSearchbar" type="submit" data-bind="click: search"></button>
-                    <a class="btn btn-danger" style="float:right" href="favouriteDrivers.html" role="button">Check your favourites</a> 
+                    <form>
+                        <input type="text" placeholder="Procurar arena" id="searchbar" data-bind="textInput: searchbar, event: {change: search}" >
+                        <button style="margin-left: 1px;" class="fa fa-search btn btn-outline-danger" id="ArenasSearchbar" type="submit" data-bind="click: search"></button>
+                    </form>
                 </div>
             </div>
         </div>

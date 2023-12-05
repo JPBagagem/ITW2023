@@ -13,6 +13,37 @@ var vm = function () {
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
+    self.search = function() { // mudar isto !!!!!!!!!!!!!
+        console.log("searching")
+        if ($("#searchbar").val() === "") {
+            showLoading();
+            var pg = getUrlParameter('page');
+            console.log(pg);
+            if (pg == undefined)
+                self.activate(1);
+            else {
+                self.activate(pg);
+            }
+        } else {
+            var changeUrl = 'http://192.168.160.58/NBA/api/Arenas/Search?q=' + $("#searchbar").val();
+            self.driverslist = [];
+        ajaxHelper(changeUrl, 'GET').done(function(data) {
+            console.log(data.length)
+            if (data.length == 0) {
+                return alert('No results found')
+            }
+            self.totalPages(1)
+            console.log(data);
+            showLoading();
+            self.records(data);
+            self.totalRecords(data.length);
+            hideLoading();
+            for (var i in data) {
+                self.driverslist.push(data[i]);
+                }
+            });
+        };
+    };
     self.previousPage = ko.computed(function () {
         return self.currentPage() * 1 - 1;
     }, self);
