@@ -179,3 +179,39 @@ document.getElementById('btnSwitch').addEventListener('click',()=>{
         rodape.classList.remove("rednav");
     }
 })
+
+$(document).ready(function () {
+    console.log("ready!");
+    ko.applyBindings(new vm());
+    $("#searchb").autocomplete({
+        minLength: 1,
+        autoFill: true,
+        source: function (request, response) {
+            $.ajax({
+                type: 'GET',
+                url: 'http://192.168.160.58/NBA/api/Arenas/Search?q='+ $("#searchbar").val(),
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        return item.Name;
+                    }));
+                },
+                error: function(result) {
+                    alert(result.statusText);
+                },
+            });
+        },
+        select: function (e, ui) {
+            $.ajax({
+                type: 'GET',
+                url: 'http://192.168.160.58/NBA/api/Arenas/Search?q=' + ui.item.label,
+                success: function (data) {
+                    window.location = 'arenaDetails.html?id=' + data[0].Id;
+                }
+            })
+        },
+        messages: {
+            noResults: '',
+            results: function() {}
+        }
+    });
+});
