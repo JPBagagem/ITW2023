@@ -48,11 +48,12 @@ li.page-item a {
 
 .sidetext{
     border-radius: 25px;
-    background: #bac5b2;
+    background: #b5b5b5;
     padding: 20px;
 }
 
 .redes_sociais{
     margin: 20px 5px 20px 5px;
-    height: 48px; 
+    height: 48px;
+    width: 48px;
 }
