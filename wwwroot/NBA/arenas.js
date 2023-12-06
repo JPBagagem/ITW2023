@@ -13,7 +13,7 @@ var vm = function () {
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
-    self.search = function() { // mudar isto !!!!!!!!!!!!!
+    self.search = function() { 
         console.log("searching")
         if ($("#searchbar").val() === "") {
             showLoading();
@@ -26,7 +26,7 @@ var vm = function () {
             }
         } else {
             var changeUrl = 'http://192.168.160.58/NBA/api/Arenas/Search?q=' + $("#searchbar").val();
-            self.driverslist = [];
+            self.arenaslist = [];
         ajaxHelper(changeUrl, 'GET').done(function(data) {
             console.log(data.length)
             if (data.length == 0) {
@@ -39,7 +39,7 @@ var vm = function () {
             self.totalRecords(data.length);
             hideLoading();
             for (var i in data) {
-                self.driverslist.push(data[i]);
+                self.arenaslist.push(data[i]);
                 }
             });
         };
@@ -179,3 +179,39 @@ document.getElementById('btnSwitch').addEventListener('click',()=>{
         rodape.classList.remove("rednav");
     }
 })
+
+$(document).ready(function () {
+    console.log("ready!");
+    ko.applyBindings(new vm());
+    $("#searchb").autocomplete({
+        minLength: 1,
+        autoFill: true,
+        source: function (request, response) {
+            $.ajax({
+                type: 'GET',
+                url: 'http://192.168.160.58/NBA/api/Arenas/Search?q='+ $("#searchbar").val(),
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        return item.Name;
+                    }));
+                },
+                error: function(result) {
+                    alert(result.statusText);
+                },
+            });
+        },
+        select: function (e, ui) {
+            $.ajax({
+                type: 'GET',
+                url: 'http://192.168.160.58/NBA/api/Arenas/Search?q=' + ui.item.label,
+                success: function (data) {
+                    window.location = 'arenaDetails.html?id=' + data[0].Id;
+                }
+            })
+        },
+        messages: {
+            noResults: '',
+            results: function() {}
+        }
+    });
+});
