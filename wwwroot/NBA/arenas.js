@@ -13,7 +13,7 @@ var vm = function () {
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
-    self.search = function() { // mudar isto !!!!!!!!!!!!!
+    self.search = function() { 
         console.log("searching")
         if ($("#searchbar").val() === "") {
             showLoading();
@@ -26,7 +26,7 @@ var vm = function () {
             }
         } else {
             var changeUrl = 'http://192.168.160.58/NBA/api/Arenas/Search?q=' + $("#searchbar").val();
-            self.driverslist = [];
+            self.arenaslist = [];
         ajaxHelper(changeUrl, 'GET').done(function(data) {
             console.log(data.length)
             if (data.length == 0) {
@@ -39,7 +39,7 @@ var vm = function () {
             self.totalRecords(data.length);
             hideLoading();
             for (var i in data) {
-                self.driverslist.push(data[i]);
+                self.arenaslist.push(data[i]);
                 }
             });
         };
