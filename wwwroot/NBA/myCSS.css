@@ -46,6 +46,12 @@ li.page-item a {
     background-color: rgb(203, 15, 40);
 }
 
+.navbar-nav, .pagination{
+    background-color: transparent;
+    border: 0px;
+    width: auto;
+  }
+
 .sidetext{
     border-radius: 25px;
     background: #b5b5b5;
@@ -56,4 +62,13 @@ li.page-item a {
     margin: 20px 5px 20px 5px;
     height: 48px;
     width: 48px;
+}
+
+ul{
+    list-style-type: none;
+    background-color: white;
+    text-align: left;
+    border: 1px solid black;
+    width: 10%;
+    padding: 0px 2px 0px 2px;
 }
