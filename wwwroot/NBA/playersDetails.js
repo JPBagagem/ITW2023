@@ -12,12 +12,12 @@ var vm = function () {
     self.Name = ko.observable('');
     self.CountryId = ko.observable('');
     self.CountryName = ko.observable('');
-    self.TeamId = ko.observable('');
-    self.TeamName = ko.observable('');
-    self.TeamAcronym = ko.observable('');
-    self.Location = ko.observable('');
-    self.Capacity = ko.observable('');
-    self.Opened = ko.observable('');
+    self.School = ko.observable('');
+    self.Weight = ko.observable('');
+    self.Height = ko.observable('');
+    self.Birthdate = ko.observable('');
+    self.PositionId = ko.observable('');
+    self.PositionName = ko.observable('');
     self.Photo = ko.observable('');
 
     //--- Page Events
@@ -31,12 +31,12 @@ var vm = function () {
             self.Name(data.Name);
             self.CountryId(data.CountryId);
             self.CountryName(data.CountryName);
-            self.TeamId(data.TeamId);
-            self.TeamName(data.TeamName);
-            self.TeamAcronym(data.TeamAcronym);
-            self.Location(data.Location);
-            self.Capacity(data.Capacity);
-            self.Opened(data.Opened);
+            self.School(data.School);
+            self.Weight(data.Weight);
+            self.Height(data.Height);
+            self.Birthdate(data.Birthdate);
+            self.PositionId(data.PositionId);
+            self.PositionName(data.PositionName);
             self.Photo(data.Photo);
         });
     };
@@ -57,7 +57,7 @@ var vm = function () {
             }
         });
     }
-
+    
     function showLoading() {
         $('#myModal').modal('show', {
             backdrop: 'static',
