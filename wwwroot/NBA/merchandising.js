@@ -1,73 +1,108 @@
-let inputPrecoTotal = document.getElementById("total");
-let inputQtdTotal = document.getElementById("quantidades");
-let precoTotal = 0;
-let qtdTotal = 0;
+let openShopping = document.querySelector('.shopping');
+let closeShopping = document.querySelector('.closeShopping');
+let list = document.querySelector('.list');
+let listCard = document.querySelector('.listCard');
+let body = document.querySelector('body');
+let total = document.querySelector('.total');
+let quantity = document.querySelector('.quantity');
 
-
-function addProduct(number) {
-    let quantidadeProdutoSelecionado = document.getElementById("qty" + number);
-    quantidadeProdutoSelecionado.value++;
-    calculate();
-}
-
-function calculate() {
-    let precAtual, qtdAtual;
-    precoTotal = 0;
-    qtdTotal = 0;
-
-    for (let i = 1; i <= 6; i++) {
-        precAtual = parseFloat(document.getElementById('price' + i).value);
-        qtdAtual = parseFloat(document.getElementById('qty' + i).value);
-        precoTotal += precAtual * qtdAtual;
-        qtdTotal += qtdAtual;
-    }
-
-    if (precoTotal> 100) {
-        precoTotal  = precoTotal * 0.95;
-    }
-
-    if (qtdTotal>= 5) {
-        precoTotal  = precoTotal * 0.95;
-    }
-    
-    inputQtdTotal.innerText = qtdTotal;
-    inputPrecoTotal.innerText = precoTotal.toFixed(2);
-}
-
-function valid() {
-    if (precoTotal <= 0 && qtdTotal <= 0) {
-        alert("Erro o carrinho está vazio");
-        return false;
-    } else {
-        return true
-    }
-}
-
-function clean() {
-    for (let i = 1; i <= 6; i++) {
-        qtdAtual = document.getElementById('qty' + i).value = 0;
-    }
-    precoTotal = 0;
-    qtdTotal = 0;
-    inputPrecoTotal.innerText = "0.00";
-    inputQtdTotal.innerText = 0;
-}
-
-document.getElementById('btnSwitch').addEventListener('click',()=>{
-    let cabecalho = document.getElementById("navtop");
-    let rodape = document.getElementById("navbutton");
-    if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
-        document.documentElement.setAttribute('data-bs-theme','light')
-        cabecalho.classList.add("bluenav");
-        cabecalho.classList.remove("rednav");
-        rodape.classList.add("rednav");
-        rodape.classList.remove("bluenav");
-    }
-    else {
-        document.documentElement.setAttribute('data-bs-theme','dark')
-        cabecalho.classList.add("rednav");
-        cabecalho.classList.remove("bluenav");
-        rodape.classList.add("bluenav");
-        rodape.classList.remove("rednav");
-    }
+openShopping.addEventListener('click', ()=>{
+    body.classList.add('active');
 })
+closeShopping.addEventListener('click', ()=>{
+    body.classList.remove('active');
+})
+
+let products = [
+    {
+        id: 1,
+        name: 'PRODUCT NAME 1',
+        image: '1.PNG',
+        price: 120000
+    },
+    {
+        id: 2,
+        name: 'PRODUCT NAME 2',
+        image: '2.PNG',
+        price: 120000,
+    },
+    {
+        id: 3,
+        name: 'PRODUCT NAME 3',
+        image: '3.PNG',
+        price: 220000
+    },
+    {
+        id: 4,
+        name: 'PRODUCT NAME 4',
+        image: '4.PNG',
+        price: 123000
+    },
+    {
+        id: 5,
+        name: 'PRODUCT NAME 5',
+        image: '5.PNG',
+        price: 320000
+    },
+    {
+        id: 6,
+        name: 'PRODUCT NAME 6',
+        image: '6.PNG',
+        price: 120000
+    }
+];
+let listCards  = [];
+function initApp(){
+    products.forEach((value, key) =>{
+        let newDiv = document.createElement('div');
+        newDiv.classList.add('item');
+        newDiv.innerHTML = `
+            <img src="image/${value.image}">
+            <div class="title">${value.name}</div>
+            <div class="price">${value.price.toLocaleString()}</div>
+            <button onclick="addToCard(${key})">Adicionar ao carrinho</button>`;
+        list.appendChild(newDiv);
+    })
+}
+initApp();
+function addToCard(key){
+    if(listCards[key] == null){
+        // copy product form list to list card
+        listCards[key] = JSON.parse(JSON.stringify(products[key]));
+        listCards[key].quantity = 1;
+    }
+    reloadCard();
+}
+function reloadCard(){
+    listCard.innerHTML = '';
+    let count = 0;
+    let totalPrice = 0;
+    listCards.forEach((value, key)=>{
+        totalPrice = totalPrice + value.price;
+        count = count + value.quantity;
+        if(value != null){
+            let newDiv = document.createElement('li');
+            newDiv.innerHTML = `
+                <div><img src="image/${value.image}"/></div>
+                <div>${value.name}</div>
+                <div>${value.price.toLocaleString()}</div>
+                <div>
+                    <button onclick="changeQuantity(${key}, ${value.quantity - 1})">-</button>
+                    <div class="count">${value.quantity}</div>
+                    <button onclick="changeQuantity(${key}, ${value.quantity + 1})">+</button>
+                </div>`;
+                listCard.appendChild(newDiv);
+        }
+    })
+    total.innerText = totalPrice.toLocaleString();
+    quantity.innerText = count;
+}
+function changeQuantity(key, quantity){
+    if(quantity == 0){
+        delete listCards[key];
+    }else{
+        listCards[key].quantity = quantity;
+        listCards[key].price = quantity * products[key].price;
+    }
+    reloadCard();
+}

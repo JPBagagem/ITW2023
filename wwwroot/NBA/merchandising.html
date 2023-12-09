@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt">
-
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="description" content="Moda Online">
-    <title>NBA Merchandising</title>
-    <link rel="icon" type="image/png" href="https://www.pontorosa.pt/mini.png">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="myCSS.css" rel="stylesheet" />
+    <link rel="stylesheet" href="myCSS.css" />
+    <link rel="stylesheet" href="merchandising.css">
 </head>
-
-<body>
+<body class="">
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bluenav" id="navtop">
         <div class="container">
             <a class="navbar-brand" href="index.html" tabindex="NBA"><img src="NBAlogo.png" height="24" /></a>
@@ -35,113 +36,33 @@
             </button>
         </div>
     </nav>
-    <div class="container mt-4">
-        <form action="http://192.168.160.36/FormEcho.aspx">
-            <div class="row">
-                <div class="col-md-1 offset-6 text-right"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
-                </div>
-                <div class="col-md-1 text-right"><span class="form-control" id="quantidades"
-                        title="Quantidade total de produtos">0</span></div>
-                <div class="col-md-2 text-right"><span class="form-control" id="total"
-                        title="Preço total da compra">0.00</span></div>
-                <div class="col-md-2 text-right">
-                    <button type="submit" onclick="return valid()" class="btn btn-primary"
-                        title="Enviar pedido">Enviar</button>
-                    <button type="button" onclick="clean()" class="btn btn-secondary" title="Limpar pedido"><i
-                            class="fa fa-trash-o"></i></button>
-                </div>
+    <div class="container">
+        <header>
+            <h1>NBA Merchandising</h1>
+            <div class="shopping">
+                <img src="https://raw.githubusercontent.com/HoanghoDev/addtocardv2/773a2f3f4ef72d46fa2187b31211a7375524fa46/image/shopping.svg">
+                <span class="quantity">0</span>
             </div>
-            <hr />
-            <h1 class="border-bottom my-3 py-3">NBA Merchandising</h1>
-            <div class="row">
-                <div class="col-sm-4"><img height="350px" src="https://acdn.mitiendanube.com/stores/001/226/115/products/screenshot_691-a77f2f0286c6c2954916003683394522-640-0.png" /></div>
-                <div class="col-sm-4"><img src="https://fanatics.frgimages.com/milwaukee-bucks/mens-fanatics-branded-giannis-antetokounmpo-black-milwaukee-bucks-fast-break-replica-player-jersey-statement-edition_pi4793000_ff_4793103-e21f5586d8b13a74e24f_full.jpg?_hv=2&w=340" /></div>
-                <div class="col-sm-4"><img src="https://fanatics.frgimages.com/golden-state-warriors/unisex-nike-stephen-curry-royal-golden-state-warriors-swingman-jersey-icon-edition_pi4650000_ff_4650408-bce9200a988d4fe31b0d_full.jpg?_hv=2&w=340" /></div>
-                <div class="col-sm-4">
-                    <input type="hidden" id="qty1" name="qty1" value="0" />
-                    <h5>Camisola Lakers<br /><small>Original</small></h5>
-                    <div class="text-danger text-right"><input id="price1" name="price1" value="59.99"
-                            class="text-danger text-right border-0" readonly> €</div>
-                    <button type="button" class="btn btn-primary btn-block" onclick="this.blur(); addProduct(1)"><i
-                            class="fa fa-shopping-bag"></i> Adicionar ao meu cesto</button>
-                </div>
-                <div class="col-sm-4">
-                    <input type="hidden" id="qty2" name="qty2" value="0" />
-                    <h5>Camisola Bucks<br /><small>Original</small></h5>
-                    <div class="text-danger text-right"><input id="price2" name="price2" value="59.99"
-                            class="text-danger text-right border-0" readonly> €</div>
-                    <button type="button" class="btn btn-primary btn-block" onclick="this.blur(); addProduct(2)"><i
-                            class="fa fa-shopping-bag"></i> Adicionar ao meu cesto</button>
-                </div>
-                <div class="col-sm-4">
-                    <input type="hidden" id="qty3" name="qty3" value="0" />
-                    <h5>Camisola Warriors<br /><small>Original</small></h5>
-                    <div class="text-danger text-right"><input id="price3" name="price3" value="59.99"
-                            class="text-danger text-right border-0" readonly> €</div>
-                    <button type="button" class="btn btn-primary btn-block" onclick="this.blur(); addProduct(3)"><i
-                            class="fa fa-shopping-bag"></i> Adicionar ao meu cesto</button>
-                </div>
-            </div>
-            <p>&nbsp;</p>
-            <div class="row">
-                <div class="col-sm-4"><img height="350px" src="https://hoopersparadise.store/cdn/shop/files/IMG_0920.jpg?v=1689505118&width=533" /></div>
-                <div class="col-sm-4"><img src="https://fanatics.frgimages.com/boston-celtics/unisex-nike-jayson-tatum-kelly-green-boston-celtics-swingman-jersey-icon-edition_pi4650000_ff_4650391-20e3b038ad7098229d53_full.jpg?_hv=2&w=340" /></div>
-                <div class="col-sm-4"><img src="https://images.footballfanatics.com/chicago-bulls/chicago-bulls-nike-icon-swingman-jersey-custom-unisex_ss4_p-13304098+u-1bnmvuu775wdjk6j9fp8+v-e858b561236249d684c0e5486cb1440a.jpg?_hv=2&w=340" /></div>
-                <div class="col-sm-4">
-                    <input type="hidden" id="qty4" name="qty4" value="0" />
-                    <h5>Camisola Suns<br /><small>Original</small></h5>
-                    <div class="text-danger text-right"><input id="price4" name="price4" value="59.99"
-                            class="text-danger text-right border-0" readonly> €</div>
-                    <button type="button" class="btn btn-primary btn-block" onclick="this.blur(); addProduct(4)"><i
-                            class="fa fa-shopping-bag"></i> Adicionar ao meu cesto</button>
-                </div>
-                <div class="col-sm-4">
-                    <input type="hidden" id="qty5" name="qty5" value="0" />
-                    <h5>Camisola Boston<br /><small>Original</small></h5>
-                    <div class="text-danger text-right"><input id="price5" name="price5" value="59.99"
-                            class="text-danger text-right border-0" readonly> €</div>
-                    <button type="button" class="btn btn-primary btn-block" onclick="this.blur(); addProduct(5)"><i
-                            class="fa fa-shopping-bag"></i> Adicionar ao meu cesto</button>
-                </div>
-                <div class="col-sm-4">
-                    <input type="hidden" id="qty6" name="qty6" value="0" />
-                    <h5>Camisola Bulls<br /><small>Original</small></h5>
-                    <div class="text-danger text-right"><input id="price6" name="price6" value="59.99"
-                            class="text-danger text-right border-0" readonly> €</div>
-                    <button type="button" class="btn btn-primary btn-block" onclick="this.blur(); addProduct(6)"><i
-                            class="fa fa-shopping-bag"></i> Adicionar ao meu cesto</button>
-                </div>
-            </div>
-        </form>
-        <hr />
-        <p class="navbar-text small d-none d-md-block"></a>Aqui podes comprar alguns itens da nossa página.</p>
-    </div>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        <img src="NBAlogo.png" height="30" /> Loading data...
-                    </h5>
-                </div>
-                <div class="modal-body text-center">
-                    <i class="fa fa-spin fa-3x fa-refresh"></i>
-                </div>
-            </div>
+        </header>
+
+        <div class="list">
+          
         </div>
     </div>
-    <nav class="navbar navbar-dark fixed-bottom rednav" id="navbutton">
-        <div class="container small">
-            <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2023/24</div>
-            <div class="navbar-text">Made with <i class="fa fa-heart-o"></i> for U by <a href="mailto:jsp@ua.pt" class="text-decoration-none">jsp@ua.pt</a>.</div>
-            <div class="navbar-nav">    
-                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
-            </div>
+    <div class="card">
+        <h1>Card</h1>
+        <ul class="listCard">
+        </ul>
+        <div class="checkOut">
+            <div class="total">0</div>
+            <div class="closeShopping">Close</div>
         </div>
-    </nav>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="arenas.js"></script>
     <script src="merchandising.js"></script>
 </body>
-
 </html>
