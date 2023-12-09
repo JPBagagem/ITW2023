@@ -53,13 +53,13 @@
         <div class="py-2 border-bottom mb-3">
             <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
         </div>
-        <div class="row border-bottom g-2 small col-3" data-bind="visible: Photo() != '' && Photo() != null" style="margin: 10px; float: left">
+        <div class="row border-bottom g-2 small col-2" data-bind="visible: Photo() != '' && Photo() != null" style="margin: 10px; float: left">
             <img class="img-thumbnail profile" data-bind="attr:{src: Photo}"><br />
             <a><i class="fa fa-link"></i><a class="link-dark text-decoration-none" data-bind="attr: { href: Photo }, text: ' [' + Photo() + ']' " target="_blank"></a></a>
         </div>
-        <div class="row border-bottom g-2 small col-3" data-bind="visible: Photo() == '' || Photo() == null" style="margin: 10px; float: left">
-                <img class="img-thumbnail profile" src="http://192.168.160.58/NBA/Images/fallback.png"><br />
-                <a><i class="fa fa-link"></i> [http://192.168.160.58/NBA/Images/fallback.png]</a>
+        <div class="row border-bottom g-2 small col-2" data-bind="visible: Photo() == '' || Photo() == null" style="margin: 10px; float: left">
+            <img class="img-thumbnail profile" src="http://192.168.160.58/NBA/Images/fallback.png"><br />
+            <a><i class="fa fa-link"></i> [http://192.168.160.58/NBA/Images/fallback.png]</a>
         </div>
         <!-- ko if:Name().length > 0 -->
         <div>
