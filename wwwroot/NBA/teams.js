@@ -116,7 +116,7 @@ var vm = function () {
                 type: 'GET',
                 url: 'http://192.168.160.58/NBA/API/Teams/Search?q=' + ui.item.label,
                 success: function (data) {
-                    window.location = 'teamsDetails.html?id=' + data[0].Id + '&acronym=' + data[0].Acronym;
+                    window.location = 'teamsDetails.html?id=' + data[0].Id + '&acronimo=' + data[0].Acronym;
                 }
             })
         },

@@ -21,7 +21,6 @@ var vm = function () {
 
     //--- Page Events
     self.activate = function (Id, acronimo) {
-        console.log(acronimo);
         console.log('CALL: getTeams...');
         var composedUri = self.baseUri() + Id + '?acronym=' + acronimo;
         ajaxHelper(composedUri, 'GET').done(function (data) {
@@ -88,6 +87,7 @@ var vm = function () {
     showLoading();
     var pg = getUrlParameter('id');
     var tg = getUrlParameter('acronimo');
+    console.log(pg);
     console.log(tg);
     if (pg == undefined)
         self.activate(1);

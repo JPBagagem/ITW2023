@@ -50,56 +50,61 @@
     <!-- Work Area-->
     
     <div class="container">
-        <div class="py-2 border-bottom mb-3">
-            <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
-        </div>
-        <div class="row border-bottom g-2 col-2" data-bind="visible: Photo() != '' && Photo() != null" style="margin: 10px; float: left">
-            <img class="img-thumbnail profile" data-bind="attr:{src: Photo}"><br />
-        </div>
-        <div class="row border-bottom g-2 col-2" data-bind="visible: Photo() == '' || Photo() == null" style="margin: 10px; float: left">
-            <img class="img-thumbnail profile" src="http://192.168.160.58/NBA/Images/fallback.png"><br />
-        </div>
         <!-- ko if:Name().length > 0 -->
-        <div>
-            <div class="row border-bottom g-2">
-                <div class="col-2">PlayerId</div><div class="col-10" data-bind="text: Id"></div>
+        <div class="row border-bottom">
+            <div class="container">
+                <div class="py-2 border-bottom mb-3">
+                    <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
+                </div>
+                <div class="row g-2 col-2" data-bind="visible: Photo() != '' && Photo() != null" style="margin: 10px; float: left">
+                    <img class="img-thumbnail profile" data-bind="attr:{src: Photo}"><br />
+                </div>
+                <div class="row g-2 col-2" data-bind="visible: Photo() == '' || Photo() == null" style="margin: 10px; float: left">
+                    <img class="img-thumbnail profile" src="http://192.168.160.58/NBA/Images/fallback.png"><br />
+                </div>
+                <div>
+                    <div class="row border-bottom g-2">
+                        <div class="col-2">PlayerId</div><div class="col-10" data-bind="text: Id"></div>
+                    </div>
+                    <div class="row border-bottom g-2">
+                        <div class="col-2">Name</div><div class="col-10" data-bind="text: Name"></div>
+                    </div>
+                    <div class="row border-bottom g-2" data-bind="visible: CountryName() != '' && CountryName() != null">
+                        <div class="col-2">Country</div><div class="col-10"><a class="nav-link" data-bind="text:CountryName()+ ' (' + CountryId() + ')', attr: { href:'./teamDetails.html?id=' + CountryId() }" title="Show Team Details"></a></div>
+                    </div>
+                    <div class="row border-bottom g-2" data-bind="visible: Birthdate() != '' && Birthdate() != null">
+                        <div class="col-2">Birthdate</div>
+                        <div class="col-10"><a class="nav-link" data-bind="text:Birthdate"></a></div>
+                    </div>
+                    <div class="row border-bottom g-2" data-bind="visible: PositionName() != '' && PositionName() != null">
+                        <div class="col-2">Position</div>
+                        <div class="col-10"><a class="nav-link" data-bind="text: PositionName() + ' (' + PositionId() + ')' "></a></div>
+                    </div>
+                    <div class="row border-bottom g-2" data-bind="visible: Height() != '' && Height() != null">
+                        <div class="col-2">Height</div>
+                        <div class="col-10"><a class="nav-link" data-bind="text: Height() + ' ft' "></a></div>
+                    </div>
+                    <div class="row border-bottom g-2" data-bind="visible: Weight() != '' && Weight() != null">
+                        <div class="col-2">Weight</div>
+                        <div class="col-10"><a class="nav-link" data-bind="text: Weight() + ' lb' "></a></div>
+                    </div>
+                    <div class="row border-bottom g-2" data-bind="visible: School() != '' && School() != null">
+                        <div class="col-2">School</div>
+                        <div class="col-10"><a class="nav-link" data-bind="text: School "></a></div>
+                    </div>
+                </div>
             </div>
-            <div class="row border-bottom g-2">
-                <div class="col-2">Name</div><div class="col-10" data-bind="text: Name"></div>
+        </div>
+        <!-- /ko -->
+        <div class="small">
+            <div data-bind="visible: Photo() != '' && Photo() != null">
+                <a><i class="fa fa-link"></i><a class="link text-decoration-none text-reset" data-bind="attr: { href: Photo }, text: ' Imagem de: ' + Photo()" target="_blank"></a></a>
             </div>
-            <div class="row border-bottom g-2" data-bind="visible: CountryName() != '' && CountryName() != null">
-                <div class="col-2">Country</div><div class="col-10"><a class="nav-link" data-bind="text:CountryName()+ ' (' + CountryId() + ')', attr: { href:'./teamDetails.html?id=' + CountryId() }" title="Show Team Details"></a></div>
-            </div>
-            <div class="row border-bottom g-2" data-bind="visible: Birthdate() != '' && Birthdate() != null">
-                <div class="col-2">Birthdate</div>
-                <div class="col-10"><a class="nav-link" data-bind="text:Birthdate"></a></div>
-            </div>
-            <div class="row border-bottom g-2" data-bind="visible: PositionName() != '' && PositionName() != null">
-                <div class="col-2">Position</div>
-                <div class="col-10"><a class="nav-link" data-bind="text: PositionName() + ' (' + PositionId() + ')' "></a></div>
-            </div>
-            <div class="row border-bottom g-2" data-bind="visible: Height() != '' && Height() != null">
-                <div class="col-2">Height</div>
-                <div class="col-10"><a class="nav-link" data-bind="text: Height() + ' ft' "></a></div>
-            </div>
-            <div class="row border-bottom g-2" data-bind="visible: Weight() != '' && Weight() != null">
-                <div class="col-2">Weight</div>
-                <div class="col-10"><a class="nav-link" data-bind="text: Weight() + ' lb' "></a></div>
-            </div>
-            <div class="row border-bottom g-2" data-bind="visible: School() != '' && School() != null">
-                <div class="col-2">School</div>
-                <div class="col-10"><a class="nav-link" data-bind="text: School "></a></div>
+            <div data-bind="visible: Photo() == '' || Photo() == null">
+                <a><i class="fa fa-link"></i><a class="link text-decoration-none text-reset" href="http://192.168.160.58/NBA/Images/fallback.png"> Imagem de: http://192.168.160.58/NBA/Images/fallback.png</a></a>
             </div>
         </div>
         <br><a href="./players.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a><br>
-        <div data-bind="visible: Photo() != '' && Photo() != null">
-            <br><br>
-            <a><i class="fa fa-link"></i><a class="link text-decoration-none text-reset" data-bind="attr: { href: Photo }, text: ' Imagem de: ' + Photo()" target="_blank"></a></a>
-        </div>
-        <div data-bind="visible: Photo() == '' || Photo() == null">
-            <br><br>
-            <a><i class="fa fa-link"></i><a class="link text-decoration-none text-reset" href="http://192.168.160.58/NBA/Images/fallback.png"> Imagem de: http://192.168.160.58/NBA/Images/fallback.png</a></a>
-        </div>
         <!-- /ko -->
     </div>
     
