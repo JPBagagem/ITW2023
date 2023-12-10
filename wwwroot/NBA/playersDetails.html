@@ -53,12 +53,11 @@
         <div class="py-2 border-bottom mb-3">
             <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
         </div>
-        <div class="row border-bottom g-2 small col-2" data-bind="visible: Photo() != '' && Photo() != null" style="margin: 10px; float: left">
+        <div class="row border-bottom g-2 col-2" data-bind="visible: Photo() != '' && Photo() != null" style="margin: 10px; float: left">
             <img class="img-thumbnail profile" data-bind="attr:{src: Photo}"><br />
         </div>
-        <div class="row border-bottom g-2 small col-2" data-bind="visible: Photo() == '' || Photo() == null" style="margin: 10px; float: left">
+        <div class="row border-bottom g-2 col-2" data-bind="visible: Photo() == '' || Photo() == null" style="margin: 10px; float: left">
             <img class="img-thumbnail profile" src="http://192.168.160.58/NBA/Images/fallback.png"><br />
-            <a><i class="fa fa-link"></i> [http://192.168.160.58/NBA/Images/fallback.png]</a>
         </div>
         <!-- ko if:Name().length > 0 -->
         <div>
@@ -92,9 +91,16 @@
                 <div class="col-10"><a class="nav-link" data-bind="text: School "></a></div>
             </div>
         </div>
+        <br><a href="./players.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a><br>
+        <div data-bind="visible: Photo() != '' && Photo() != null">
+            <br><br>
+            <a><i class="fa fa-link"></i><a class="link text-decoration-none text-reset" data-bind="attr: { href: Photo }, text: ' Imagem de: ' + Photo()" target="_blank"></a></a>
+        </div>
+        <div data-bind="visible: Photo() == '' || Photo() == null">
+            <br><br>
+            <a><i class="fa fa-link"></i><a class="link text-decoration-none text-reset" href="http://192.168.160.58/NBA/Images/fallback.png"> Imagem de: http://192.168.160.58/NBA/Images/fallback.png</a></a>
+        </div>
         <!-- /ko -->
-        <a href="./players.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
-        <br><br><br><br><div><a><i class="fa fa-link"></i><a class="link-dark text-decoration-none" data-bind="attr: { href: Photo }, text: ' Imagem de: ' + Photo()" target="_blank"></a></a></div>
     </div>
     
     <!-- Modal -->

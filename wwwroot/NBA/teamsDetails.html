@@ -50,28 +50,45 @@
     <!-- Work Area-->
     
     <div class="container">
-        <div class="py-2 border-bottom mb-3">
-            <h2 data-bind="text: Id()"></h2>
+        <div class="py-2 border-bottom mb-3" data-bind="visible: Name() != '' && Name() != null">
+            <h2 data-bind="text: Name() + ' (' + Acronym() + ')' "></h2>
         </div>
-        <div class="row border-bottom g-2 small 4" data-bind="visible: Logo() != '' && Logo() != null" style="margin: 10px; float: left">
+        <div class="py-2 border-bottom mb-3" data-bind="visible: Name() == '' || Name() == null">
+            <h2 data-bind="text: Acronym()"></h2>
+        </div>
+        <div class="row border-bottom g-2 small col-3" data-bind="visible: Logo() != '' && Logo() != null" style="margin: 10px; float: left">
             <img class="img-thumbnail logo" data-bind="attr:{src: Logo}"><br />
-            <a><i class="fa fa-link"></i><a class="link-dark text-decoration-none" data-bind="attr: { href: Logo }, text: ' [' + Logo() + ']' " target="_blank"></a></a>
+            <a><i class="fa fa-link"></i><a class="link text-decoration-none text-reset" data-bind="attr: { href: Logo }, text: ' [' + Logo() + ']' " target="_blank"></a></a>
         </div>
-        <div class="row border-bottom g-2 small col-4" data-bind="visible: Logo() == '' || Logo() == null" style="margin: 10px; float: left">
+        <div class="row border-bottom g-2 small col-3" data-bind="visible: Logo() == '' || Logo() == null" style="margin: 10px; float: left">
             <img class="img-thumbnail logo" src="https://images.gamebanana.com/img/ss/tuts/100-90_619fe17d4ff4c.jpg"><br />
             <a><i class="fa fa-link"></i> [https://images.gamebanana.com/img/ss/tuts/100-90_619fe17d4ff4c.jpg]</a>
         </div>
-        <!-- ko if:Acronym.length > 0 -->
+        <!-- ko if:Acronym().length > 0 -->
         <div>
-            <div class="row border-bottom g-2">
-                <div class="col-2">PlayerId</div><div class="col-10" data-bind="text: Id"></div>
+            <div class="row border-bottom g-2" data-bind="visible: Name() != '' && Name() != null">
+                <div class="col-2">Name</div><div class="col-10" data-bind="text: Name() + ' ('+ Acronym() + ')'"></div>
             </div>
-            <div class="row border-bottom g-2">
-                <div class="col-2">Acronym</div><div class="col-10" data-bind="text: Acronym"></div>
+            <div class="row border-bottom g-2" data-bind="visible: Name() == '' || Name() == null">
+                <div class="col-2">Name</div><div class="col-10" data-bind="text: Acronym()"></div>
+            </div>
+            <div class="row border-bottom g-2" data-bind="visible: ConferenceName() != '' && ConferenceName() != null">
+                <div class="col-2">Conference</div><div class="col-10" data-bind="text: ConferenceName"></div>
+            </div>
+            <div class="row border-bottom g-2" data-bind="visible: DivisionName() != '' && DivisionName() != null">
+                <div class="col-2">Division</div><div class="col-10" data-bind="text: DivisionName"></div>
+            </div>
+            <div class="row border-bottom g-2" data-bind="visible: StateId() != '' && StateId() != null">
+                <div class="col-2">State</div><div class="col-10" data-bind="text: StateName() + ' (' + StateId() + ')'"></div>
+            </div>
+            <div class="row border-bottom g-2" data-bind="visible: City() != '' && City() != null">
+                <div class="col-2">City</div><div class="col-10" data-bind="text: City"></div>
+            </div>
+            <div class="row border-bottom g-2" data-bind="visible: History() != '' && History() != null">
+                <div class="col-2">History</div><div class="col-10" data-bind="text: History"></div>
             </div>
         </div>
 
-        <!-- /ko -->
         <!-- /ko -->
         <a href="./teams.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
     </div>

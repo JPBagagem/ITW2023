@@ -11,6 +11,13 @@ var vm = function () {
     self.Id = ko.observable('');
     self.Acronym = ko.observable('');
     self.Logo = ko.observable('');
+    self.Name = ko.observable('');
+    self.ConferenceName = ko.observable('');
+    self.DivisionName = ko.observable('');
+    self.StateId = ko.observable('');
+    self.StateName = ko.observable('');
+    self.City = ko.observable('');
+    self.History = ko.observable('');
 
     //--- Page Events
     self.activate = function (Id, acronimo) {
@@ -23,7 +30,13 @@ var vm = function () {
             self.Id(data.Id);
             self.Acronym(data.Acronym);
             self.Logo(data.Logo);
-            console.log("sus");
+            self.Name(data.Name);
+            self.ConferenceName(data.ConferenceName);
+            self.DivisionName(data.DivisionName);
+            self.StateId(data.StateId);
+            self.StateName(data.StateName);
+            self.City(data.City);
+            self.History(data.History);
         });
     };
 
