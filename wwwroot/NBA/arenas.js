@@ -13,6 +13,35 @@ var vm = function () {
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
+    self.previousPage = ko.computed(function () {
+        return self.currentPage() * 1 - 1;
+    }, self);
+    self.nextPage = ko.computed(function () {
+        return self.currentPage() * 1 + 1;
+    }, self);
+    self.fromRecord = ko.computed(function () {
+        return self.previousPage() * self.pagesize() + 1;
+    }, self);
+    self.toRecord = ko.computed(function () {
+        return Math.min(self.currentPage() * self.pagesize(), self.totalRecords());
+    }, self);
+    self.totalPages = ko.observable(0);
+    self.pageArray = function () {
+        var list = [];
+        var size = Math.min(self.totalPages(), 9);
+        var step;
+        if (size < 9 || self.currentPage() === 1)
+            step = 0;
+        else if (self.currentPage() >= self.totalPages() - 4)
+            step = self.totalPages() - 9;
+        else
+            step = Math.max(self.currentPage() - 5, 0);
+
+        for (var i = 1; i <= size; i++)
+            list.push(i + step);
+        return list;
+    };
+    
     self.search = function() { 
         console.log("searching")
         if ($("#searchbar").val() === "") {
@@ -45,35 +74,35 @@ var vm = function () {
             });
         };
     };
-    self.previousPage = ko.computed(function () {
-        return self.currentPage() * 1 - 1;
-    }, self);
-    self.nextPage = ko.computed(function () {
-        return self.currentPage() * 1 + 1;
-    }, self);
-    self.fromRecord = ko.computed(function () {
-        return self.previousPage() * self.pagesize() + 1;
-    }, self);
-    self.toRecord = ko.computed(function () {
-        return Math.min(self.currentPage() * self.pagesize(), self.totalRecords());
-    }, self);
-    self.totalPages = ko.observable(0);
-    self.pageArray = function () {
-        var list = [];
-        var size = Math.min(self.totalPages(), 9);
-        var step;
-        if (size < 9 || self.currentPage() === 1)
-            step = 0;
-        else if (self.currentPage() >= self.totalPages() - 4)
-            step = self.totalPages() - 9;
-        else
-            step = Math.max(self.currentPage() - 5, 0);
 
-        for (var i = 1; i <= size; i++)
-            list.push(i + step);
-        return list;
-    };
-
+    $("#searchbar").autocomplete({
+        minLength: 3,
+        autoFill: true,
+        source: function (request, response) {
+            $.ajax({
+                type: 'GET',
+                url: 'http://192.168.160.58/NBA/API/Arenas/Search?q='+ $("#searchbar").val(),
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        return item.Name;
+                    }));
+                },
+                error: function(result) {
+                    alert(result.statusText);
+                },
+            });
+        },
+        select: function (e, ui) {
+            $.ajax({
+                type: 'GET',
+                url: 'http://192.168.160.58/NBA/API/Arenas/Search?q=' + ui.item.label,
+                success: function (data) {
+                    window.location = 'arenaDetails.html?id=' + data[0].Id;
+                }
+            })
+        },
+    });
+    
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getArenas...');
@@ -89,37 +118,6 @@ var vm = function () {
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords);
             //self.SetFavourites();
-        });
-        $("#searchbar").autocomplete({
-            minLength: 3,
-            autoFill: true,
-            source: function (request, response) {
-                $.ajax({
-                    type: 'GET',
-                    url: 'http://192.168.160.58/NBA/API/Arenas/Search?q='+ $("#searchbar").val(),
-                    success: function (data) {
-                        response($.map(data, function (item) {
-                            return item.Name;
-                        }));
-                    },
-                    error: function(result) {
-                        alert(result.statusText);
-                    },
-                });
-            },
-            select: function (e, ui) {
-                $.ajax({
-                    type: 'GET',
-                    url: 'http://192.168.160.58/NBA/API/Arenas/Search?q=' + ui.item.label,
-                    success: function (data) {
-                        window.location = 'arenaDetails.html?id=' + data[0].Id;
-                    }
-                })
-            },
-            messages: {
-                noResults: '',
-                results: function() {}
-            }
         });
     };
 

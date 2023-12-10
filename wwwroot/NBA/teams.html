@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>ITW 2023/24 - NBA Players List</title>
+    <title>ITW 2023/24 - NBA Teams List</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
@@ -42,7 +42,7 @@
                 <h2 class="col-6" data-bind="text:displayName"></h2> 
                 <div class="col-6" style="justify-content:end; text-align: right">
                     <form>
-                        <input type="text" placeholder="Procurar jogador" id="searchbar" data-bind="event: {change: search}" >
+                        <input type="text" placeholder="Procurar equipa" id="searchbar" data-bind="event: {change: search}" >
                         <button style="margin-left: 1px;" class="fa fa-search btn btn-outline-danger" id="ArenasSearchbar" type="submit" data-bind="click: search"></button>
                     </form>
                 </div>
@@ -57,20 +57,20 @@
             <div class="col-8 my-0 pt-3">
                 <ul class="pagination float-end">
                     <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
-                    <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './players.html?page=' + '1',  rel:'prev'}">⇤</a></li>
-                    <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './players.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
+                    <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './teams.html?page=' + '1',  rel:'prev'}">⇤</a></li>
+                    <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './teams.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
                     <!-- /ko -->
                     <!-- ko foreach: pageArray()-->
                     <!-- ko if:$data == $parent.currentPage() -->
                     <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
                     <!-- /ko -->
                     <!-- ko if:$data != $parent.currentPage() -->
-                    <li class="page-item"><a class="page-link" data-bind="attr: { href: './players.html?page=' + $data, title:'Goto Page ' + $data }, text:$data"></a></li>
+                    <li class="page-item"><a class="page-link" data-bind="attr: { href: './teams.html?page=' + $data, title:'Goto Page ' + $data }, text:$data"></a></li>
                     <!-- /ko -->
                     <!-- /ko -->
                     <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
-                    <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './players.html?page=' + nextPage(), rel:'next' }">→</a></li>
-                    <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './players.html?page=' + totalPages() }">⇥</a></li>
+                    <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './teams.html?page=' + nextPage(), rel:'next' }">→</a></li>
+                    <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './teams.html?page=' + totalPages() }">⇥</a></li>
                     <!-- /ko -->
                 </ul>
             </div>
@@ -81,29 +81,23 @@
             <thead class="table-secondary">
                 <tr>
                     <th scope="col">Name</th>
-                    <th scope="col">Birthdate</th>
-                    <th scope="col">Country</th>
-                    <th scope="col">DraftYear</th>
-                    <th scope="col">PositionName</th>
-                    <th scope="col">Height</th>
-                    <th scope="col">Weight</th>
-                    <th scope="col">School</th>
+                    <th scope="col">Conference</th>
+                    <th scope="col">Division</th>
+                    <th scope="col">State</th>
+                    <th scope="col">City</th>
                     <th scope="col" class="text-right"></th>
                 </tr>
             </thead>
             <tbody data-bind="foreach: records">
                 <tr>
-                    <td class="align-middle" data-bind="text:Name"></td>
-                    <td class="align-middle"><a class="nav-link" data-bind="text:Birthdate, attr: { href:'./stateDetails.html?id=' + Birthdate }" title="Show State Details"></a></td>
-                    <td class="align-middle"><a class="nav-link" data-bind="text:CountryId, attr: { href:'./teamDetails.html?id=' + CountryId }" title="Show Team Details"></a></td>
-                    <td class="align-middle"><a class="nav-link" data-bind="text:DraftYear"></a></td>
-                    <td class="align-middle"><a class="nav-link" data-bind="text:PositionName"></a></td>
-                    <td class="align-middle"><a class="nav-link" data-bind="text:Height"></a></td>
-                    <td class="align-middle"><a class="nav-link" data-bind="text:Weight"></a></td>
-                    <td class="align-middle"><a class="nav-link" data-bind="text:School"></a></td>
+                    <td class="align-middle" data-bind="text: Acronym"></td>
+                    <td class="align-middle" data-bind="text: ConferenceName"></td>
+                    <td class="align-middle" data-bind="text: DivisionName"></td>
+                    <td class="align-middle" data-bind="text: StateId"></td>
+                    <td class="align-middle" data-bind="text: City"></td>
                     
                     <td class="text-end">
-                        <a class="btn btn-default btn-light btn-xs" data-bind="attr: { href:'./playersDetails.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
+                        <a class="btn btn-default btn-light btn-xs" data-bind="attr: { href:'./teamsDetails.html?id=' + Id + '&acronimo=' + Acronym }"><i class="fa fa-eye" title="Show details"></i></a>
                         <button class="btn btn-default btn-xs"><i class="fa fa-heart-o" data-bind="attr : { 'id': 'favourite_' + Id }" title="Add to favorites"></i></button>
                     </td>
                 </tr>
@@ -139,6 +133,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-    <script src="players.js"></script>
+    <script src="teams.js"></script>
 </body>
 </html>

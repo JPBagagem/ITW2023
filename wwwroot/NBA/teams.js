@@ -22,8 +22,8 @@ var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
-    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Players');
-    self.displayName = 'NBA Players List';
+    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Teams');
+    self.displayName = 'NBA Teams List';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
@@ -74,8 +74,8 @@ var vm = function () {
             }
         } 
         else {
-            var changeUrl = 'http://192.168.160.58/NBA/api/Players/Search?q=' + $("#searchbar").val();
-            self.Playerslist = [];
+            var changeUrl = 'http://192.168.160.58/NBA/api/Teams/Search?q=' + $("#searchbar").val();
+            self.Teamslist = [];
             ajaxHelper(changeUrl, 'GET').done(function(data) {
                 console.log(data.length)
                 if (data.length == 0) {
@@ -88,7 +88,7 @@ var vm = function () {
                 self.totalRecords(data.length);
                 hideLoading();
                 for (var i in data) {
-                    self.Playerslist.push(data[i]);
+                    self.Teamslist.push(data[i]);
                 }
             });
         };
@@ -100,7 +100,7 @@ var vm = function () {
         source: function (request, response) {
             $.ajax({
                 type: 'GET',
-                url: 'http://192.168.160.58/NBA/API/Players/Search?q='+ $("#searchbar").val(),
+                url: 'http://192.168.160.58/NBA/API/Teams/Search?q='+ $("#searchbar").val(),
                 success: function (data) {
                     response($.map(data, function (item) {
                         return item.Name;
@@ -114,9 +114,9 @@ var vm = function () {
         select: function (e, ui) {
             $.ajax({
                 type: 'GET',
-                url: 'http://192.168.160.58/NBA/API/Players/Search?q=' + ui.item.label,
+                url: 'http://192.168.160.58/NBA/API/Teams/Search?q=' + ui.item.label,
                 success: function (data) {
-                    window.location = 'playersDetails.html?id=' + data[0].Id;
+                    window.location = 'teamsDetails.html?id=' + data[0].Id + '&acronimo=' + data[0].Acronym;
                 }
             })
         },
@@ -124,7 +124,7 @@ var vm = function () {
 
     //--- Page Events
     self.activate = function (id) {
-        console.log('CALL: getPlayers...');
+        console.log('CALL: getTeams...');
         var composedUri = self.baseUri() + "?page=" + id + "&pageSize=" + self.pagesize();
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);

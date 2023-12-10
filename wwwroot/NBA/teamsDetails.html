@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>ITW 2023/24 - NBA Players Details</title>
+    <title>ITW 2023/24 - NBA Teams Details</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="myCSS.css" />
     <style>
 
-        .profile{
+        .logo{
             height: 320px;
-            width: 240px;
+            width: 320px;
             object-fit: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -50,64 +50,55 @@
     <!-- Work Area-->
     
     <div class="container">
-        <!-- ko if:Name().length > 0 -->
-        <div class="row border-bottom">
-            <div class="container">
-                <div class="py-2 border-bottom mb-3">
-                    <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
+        <div class="row">
+            <div class="container border-bottom">
+                <div class="py-2 border-bottom mb-3" data-bind="visible: Name() != '' && Name() != null">
+                    <h2 data-bind="text: Name() + ' (' + Acronym() + ')' "></h2>
                 </div>
-                <div class="row g-2 col-2" data-bind="visible: Photo() != '' && Photo() != null" style="margin: 10px; float: left">
-                    <img class="img-thumbnail profile" data-bind="attr:{src: Photo}"><br />
+                <div class="py-2 border-bottom mb-3" data-bind="visible: Name() == '' || Name() == null">
+                    <h2 data-bind="text: Acronym()"></h2>
                 </div>
-                <div class="row g-2 col-2" data-bind="visible: Photo() == '' || Photo() == null" style="margin: 10px; float: left">
-                    <img class="img-thumbnail profile" src="http://192.168.160.58/NBA/Images/fallback.png"><br />
+                <div class="row g-2 small col-3" data-bind="visible: Logo() != '' && Logo() != null" style="margin: 10px; float: left">
+                    <img class="img-thumbnail logo" data-bind="attr:{src: Logo}"><br />
                 </div>
+                <div class="row g-2 small col-3" data-bind="visible: Logo() == '' || Logo() == null" style="margin: 10px; float: left">
+                    <img class="img-thumbnail logo" src="https://images.gamebanana.com/img/ss/tuts/100-90_619fe17d4ff4c.jpg"><br />
+                </div>
+                <!-- ko if:Acronym().length > 0 -->
                 <div>
-                    <div class="row border-bottom g-2">
-                        <div class="col-2">PlayerId</div><div class="col-10" data-bind="text: Id"></div>
+                    <div class="row border-bottom g-2" data-bind="visible: Name() != '' && Name() != null">
+                        <div class="col-2">Name</div><div class="col-10" data-bind="text: Name() + ' ('+ Acronym() + ')'"></div>
                     </div>
-                    <div class="row border-bottom g-2">
-                        <div class="col-2">Name</div><div class="col-10" data-bind="text: Name"></div>
+                    <div class="row border-bottom g-2" data-bind="visible: Name() == '' || Name() == null">
+                        <div class="col-2">Name</div><div class="col-10" data-bind="text: Acronym()"></div>
                     </div>
-                    <div class="row border-bottom g-2" data-bind="visible: CountryName() != '' && CountryName() != null">
-                        <div class="col-2">Country</div><div class="col-10"><a class="nav-link" data-bind="text:CountryName()+ ' (' + CountryId() + ')', attr: { href:'./teamDetails.html?id=' + CountryId() }" title="Show Team Details"></a></div>
+                    <div class="row border-bottom g-2" data-bind="visible: ConferenceName() != '' && ConferenceName() != null">
+                        <div class="col-2">Conference</div><div class="col-10" data-bind="text: ConferenceName"></div>
                     </div>
-                    <div class="row border-bottom g-2" data-bind="visible: Birthdate() != '' && Birthdate() != null">
-                        <div class="col-2">Birthdate</div>
-                        <div class="col-10"><a class="nav-link" data-bind="text:Birthdate"></a></div>
+                    <div class="row border-bottom g-2" data-bind="visible: DivisionName() != '' && DivisionName() != null">
+                        <div class="col-2">Division</div><div class="col-10" data-bind="text: DivisionName"></div>
                     </div>
-                    <div class="row border-bottom g-2" data-bind="visible: PositionName() != '' && PositionName() != null">
-                        <div class="col-2">Position</div>
-                        <div class="col-10"><a class="nav-link" data-bind="text: PositionName() + ' (' + PositionId() + ')' "></a></div>
+                    <div class="row border-bottom g-2" data-bind="visible: StateId() != '' && StateId() != null">
+                        <div class="col-2">State</div><div class="col-10" data-bind="text: StateName() + ' (' + StateId() + ')'"></div>
                     </div>
-                    <div class="row border-bottom g-2" data-bind="visible: Height() != '' && Height() != null">
-                        <div class="col-2">Height</div>
-                        <div class="col-10"><a class="nav-link" data-bind="text: Height() + ' ft' "></a></div>
+                    <div class="row border-bottom g-2" data-bind="visible: City() != '' && City() != null">
+                        <div class="col-2">City</div><div class="col-10" data-bind="text: City"></div>
                     </div>
-                    <div class="row border-bottom g-2" data-bind="visible: Weight() != '' && Weight() != null">
-                        <div class="col-2">Weight</div>
-                        <div class="col-10"><a class="nav-link" data-bind="text: Weight() + ' lb' "></a></div>
-                    </div>
-                    <div class="row border-bottom g-2" data-bind="visible: School() != '' && School() != null">
-                        <div class="col-2">School</div>
-                        <div class="col-10"><a class="nav-link" data-bind="text: School "></a></div>
+                    <div class="row border-bottom g-2" data-bind="visible: History() != '' && History() != null">
+                        <div class="col-2">History</div><div class="col-10" data-bind="text: History"></div>
                     </div>
                 </div>
+                <!-- /ko -->
             </div>
         </div>
-        <!-- /ko -->
-        <div class="small">
-            <div data-bind="visible: Photo() != '' && Photo() != null">
-                <a><i class="fa fa-link"></i><a class="link text-decoration-none text-reset" data-bind="attr: { href: Photo }, text: ' Imagem de: ' + Photo()" target="_blank"></a></a>
-            </div>
-            <div data-bind="visible: Photo() == '' || Photo() == null">
-                <a><i class="fa fa-link"></i><a class="link text-decoration-none text-reset" href="http://192.168.160.58/NBA/Images/fallback.png"> Imagem de: http://192.168.160.58/NBA/Images/fallback.png</a></a>
-            </div>
+        <div class="small col-12" data-bind="visible: Logo() != '' && Logo() != null" style="margin: 10px">
+            <i class="fa fa-link"></i><a class="link text-decoration-none text-reset" data-bind="attr: { href: Logo }, text: ' [' + Logo() + ']' " target="_blank"></a>
         </div>
-        <br><a href="./players.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a><br>
-        <!-- /ko -->
+        <div class="small col-12" data-bind="visible: Logo() == '' || Logo() == null" style="margin: 10px">
+            <a><i class="fa fa-link"></i> [https://images.gamebanana.com/img/ss/tuts/100-90_619fe17d4ff4c.jpg]</a>
+        </div>
+        <br><a href="./teams.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
     </div>
-    
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -136,6 +127,6 @@
     <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js" integrity="sha512-2AL/VEauKkZqQU9BHgnv48OhXcJPx9vdzxN1JrKDVc4FPU/MEE/BZ6d9l0mP7VmvLsjtYwqiYQpDskK9dG8KBA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../lib/jquery/dist/jquery.min.js"></script>
-    <script src="playersDetails.js"></script>
+    <script src="teamsDetails.js"></script>
 </body>
 </html>

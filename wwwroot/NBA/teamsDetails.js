@@ -3,41 +3,39 @@ var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
-    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Players/');
-    self.displayName = 'NBA Player Details';
+    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Teams/');
+    self.displayName = 'NBA Team Details';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     //--- Data Record
     self.Id = ko.observable('');
+    self.Acronym = ko.observable('');
+    self.Logo = ko.observable('');
     self.Name = ko.observable('');
-    self.CountryId = ko.observable('');
-    self.CountryName = ko.observable('');
-    self.School = ko.observable('');
-    self.Weight = ko.observable('');
-    self.Height = ko.observable('');
-    self.Birthdate = ko.observable('');
-    self.PositionId = ko.observable('');
-    self.PositionName = ko.observable('');
-    self.Photo = ko.observable('');
+    self.ConferenceName = ko.observable('');
+    self.DivisionName = ko.observable('');
+    self.StateId = ko.observable('');
+    self.StateName = ko.observable('');
+    self.City = ko.observable('');
+    self.History = ko.observable('');
 
     //--- Page Events
-    self.activate = function (id) {
-        console.log('CALL: getArena...');
-        var composedUri = self.baseUri() + id;
+    self.activate = function (Id, acronimo) {
+        console.log('CALL: getTeams...');
+        var composedUri = self.baseUri() + Id + '?acronym=' + acronimo;
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
             hideLoading();
             self.Id(data.Id);
+            self.Acronym(data.Acronym);
+            self.Logo(data.Logo);
             self.Name(data.Name);
-            self.CountryId(data.CountryId);
-            self.CountryName(data.CountryName);
-            self.School(data.School);
-            self.Weight(data.Weight);
-            self.Height(data.Height);
-            self.Birthdate(data.Birthdate);
-            self.PositionId(data.PositionId);
-            self.PositionName(data.PositionName);
-            self.Photo(data.Photo);
+            self.ConferenceName(data.ConferenceName);
+            self.DivisionName(data.DivisionName);
+            self.StateId(data.StateId);
+            self.StateName(data.StateName);
+            self.City(data.City);
+            self.History(data.History);
         });
     };
 
@@ -88,11 +86,13 @@ var vm = function () {
     //--- start ....
     showLoading();
     var pg = getUrlParameter('id');
+    var tg = getUrlParameter('acronimo');
     console.log(pg);
+    console.log(tg);
     if (pg == undefined)
         self.activate(1);
     else {
-        self.activate(pg);
+        self.activate(pg, tg);
     }
     console.log("VM initialized!");
 };
