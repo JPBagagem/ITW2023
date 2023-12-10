@@ -11,18 +11,6 @@
     <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="myCSS.css" />
-    <style>
-
-        .logo{
-            height: 320px;
-            width: 320px;
-            object-fit: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-    </style>
 </head>
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bluenav" id="navtop">
@@ -33,7 +21,7 @@
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="arenas.html"><i class="fa fa-soccer-ball-o text-warning"></i> Arenas</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="players.html"><i class="fa fa-user-o text-primary"></i> Players</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="teams.html"><i class="fa fa-flag-o text-danger"></i> Teams</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="xxx.html"><i class="fa fa-map-marker text-success"></i> States</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="states.html"><i class="fa fa-map-marker text-success"></i> States</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="xxx.html"><i class="fa fa-bookmark-o text-info "></i> Seasons</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="merchandising.html"><i class="fa fa-shopping-cart text-secondary" aria-hidden="true"></i> Merchandising</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="xxx.html"><i class="fa fa-magic" title="The party continues..."></i> &middot;&middot;&middot;</a></li>
@@ -58,11 +46,8 @@
                 <div class="py-2 border-bottom mb-3" data-bind="visible: Name() == '' || Name() == null">
                     <h2 data-bind="text: Acronym()"></h2>
                 </div>
-                <div class="row g-2 small col-3" data-bind="visible: Logo() != '' && Logo() != null" style="margin: 10px; float: left">
+                <div class="row g-2 small col-3" style="margin: 10px; float: left">
                     <img class="img-thumbnail logo" data-bind="attr:{src: Logo}"><br />
-                </div>
-                <div class="row g-2 small col-3" data-bind="visible: Logo() == '' || Logo() == null" style="margin: 10px; float: left">
-                    <img class="img-thumbnail logo" src="https://images.gamebanana.com/img/ss/tuts/100-90_619fe17d4ff4c.jpg"><br />
                 </div>
                 <!-- ko if:Acronym().length > 0 -->
                 <div>
@@ -91,11 +76,8 @@
                 <!-- /ko -->
             </div>
         </div>
-        <div class="small col-12" data-bind="visible: Logo() != '' && Logo() != null" style="margin: 10px">
+        <div class="small col-12" style="margin: 10px">
             <i class="fa fa-link"></i><a class="link text-decoration-none text-reset" data-bind="attr: { href: Logo }, text: ' [' + Logo() + ']' " target="_blank"></a>
-        </div>
-        <div class="small col-12" data-bind="visible: Logo() == '' || Logo() == null" style="margin: 10px">
-            <a><i class="fa fa-link"></i> [https://images.gamebanana.com/img/ss/tuts/100-90_619fe17d4ff4c.jpg]</a>
         </div>
         <br><a href="./teams.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
     </div>

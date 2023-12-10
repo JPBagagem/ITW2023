@@ -38,6 +38,9 @@ var vm = function () {
             self.PositionId(data.PositionId);
             self.PositionName(data.PositionName);
             self.Photo(data.Photo);
+            if (data.Photo==null){
+                self.Photo("http://192.168.160.58/NBA/Images/fallback.png");
+            }
         });
     };
 

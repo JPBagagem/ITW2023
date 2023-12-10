@@ -36,6 +36,9 @@ var vm = function () {
             self.StateName(data.StateName);
             self.City(data.City);
             self.History(data.History);
+            if (data.Logo==null){
+                self.Logo("https://images.gamebanana.com/img/ss/tuts/100-90_619fe17d4ff4c.jpg");
+            }
         });
     };
 

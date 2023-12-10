@@ -36,8 +36,16 @@ var vm = function () {
             self.TeamAcronym(data.TeamAcronym);
             self.Location(data.Location);
             self.Capacity(data.Capacity);
-            self.Opened(data.Opened);
+            if (data.Opened!=null){
+                self.Opened(data.Opened);
+            }
+            else{
+                self.Opened("");
+            }
             self.Photo(data.Photo);
+            if (data.Photo==null || data.Photo==""){
+                self.Photo("https://upload.wikimedia.org/wikipedia/commons/4/4c/Estadio_de_Leiria.jpg");
+            };
         });
     };
 
