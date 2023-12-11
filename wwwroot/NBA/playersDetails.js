@@ -19,7 +19,8 @@ var vm = function () {
     self.PositionId = ko.observable('');
     self.PositionName = ko.observable('');
     self.Photo = ko.observable('');
-
+    self.Teams = ko.observable([]);
+    self.Seasons = ko.observable([]);
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getArena...');
@@ -37,6 +38,8 @@ var vm = function () {
             self.Birthdate(data.Birthdate);
             self.PositionId(data.PositionId);
             self.PositionName(data.PositionName);
+            self.Teams(data.Teams);
+            self.Seasons(data.Seasons);
             self.Photo(data.Photo);
             if (data.Photo==null){
                 self.Photo("http://192.168.160.58/NBA/Images/fallback.png");
