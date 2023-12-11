@@ -98,3 +98,8 @@ ul{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.dropdown-menu.bluenav .dropdown-item:hover {
+    background-color: black;
+    color: white;
+}
