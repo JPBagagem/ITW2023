@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ITW 2023/24 - NBA Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="myCSS.css" />
+    <style>
+        .container{
+            width: 1000px;
+            margin: auto;
+            transition: 0.5s;
+        }
+        header{
+            display: grid;
+            grid-template-columns: 1fr 50px;
+            margin-top: 50px;
+        }
+        header .shopping{
+            position: relative;
+            text-align: right;
+        }
+        header .shopping img{
+            width: 40px;
+        }
+        header .shopping span{
+            background: red;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            position: absolute;
+            top: -5px;
+            left: 80%;
+            padding: 3px 10px;
+        }
+        .list{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 20px;
+            row-gap: 20px;
+            margin-top: 50px;
+        }
+        .list .item{
+            text-align: center;
+            background-color: #DCE0E1;
+            padding: 20px;
+            box-shadow: 0 50px 50px #757676;
+            letter-spacing: 1px;
+        }
+        .list .item img{
+            width: 90%;
+            height: 430px;
+            object-fit: cover;
+        }
+        .list .item .title{
+            font-weight: 600;
+        }
+        .list .item .price{
+            margin: 10px;
+        }
+        .list .item button{
+            background-color: #1C1F25;
+            color: #fff;
+            width: 100%;
+            padding: 10px;
+        }
+        .card{
+            position: fixed;
+            top:0;
+            left: 100%;
+            width: 500px;
+            background-color: #453E3B;
+            height: 100vh;
+            transition: 0.5s;
+        }
+        .active .card{
+            left: calc(100% - 500px);
+        }
+        .active .container{
+        transform: translateX(-200px);
+        }
+        .card h1{
+            color: #E8BC0E;
+            font-weight: 100;
+            margin: 0;
+            padding: 0 20px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+        .card .checkOut{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+        }
+        .card .checkOut div{
+            background-color: #E8BC0E;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .card .checkOut div:nth-child(2){
+            background-color: #1C1F25;
+            color: #fff;
+        }
+        .listCard li{
+            display: grid;
+            grid-template-columns: 100px repeat(3, 1fr);
+            color: #fff;
+            row-gap: 10px;
+        }
+        .listCard li div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .listCard li img{
+            width: 90%;
+        }
+        .listCard li button{
+            background-color: #fff5;
+            border: none;
+        }
+        .listCard .count{
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body class="">
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bluenav" id="navtop">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" tabindex="NBA"><img src="NBAlogo.png" height="24" /></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="arenas.html"><i class="fa fa-soccer-ball-o text-warning"></i> Arenas</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="players.html"><i class="fa fa-user-o text-primary"></i> Players</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="teams.html"><i class="fa fa-flag-o text-danger"></i> Teams</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="states.html"><i class="fa fa-map-marker text-success"></i> States</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="seasons.html"><i class="fa fa-bookmark-o text-info "></i> Seasons</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="shop.html"><i class="fa fa-shopping-cart text-secondary" aria-hidden="true"></i> Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="xxx.html"><i class="fa fa-magic" title="The party continues..."></i> &middot;&middot;&middot;</a></li>
+                </ul>
+            </div>
+            <div>
+                <button class="btn border-0" id="btnSwitch"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></button>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <div class="container">
+        <header>
+            <h1>NBA Shop</h1>
+            <div class="shopping">
+                <img src="https://raw.githubusercontent.com/HoanghoDev/addtocardv2/773a2f3f4ef72d46fa2187b31211a7375524fa46/image/shopping.svg">
+                <span class="quantity">0</span>
+            </div>
+        </header>
+
+        <div class="list">
+          
+        </div>
+    </div>
+    <div class="card">
+        <h1>Card</h1>
+        <ul class="listCard">
+        </ul>
+        <div class="checkOut">
+            <div class="total">0</div>
+            <div class="closeShopping">Close</div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="shop.js"></script>
+</body>
+</html>

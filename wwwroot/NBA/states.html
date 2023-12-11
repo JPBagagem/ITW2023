@@ -23,7 +23,7 @@
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="teams.html"><i class="fa fa-flag-o text-danger"></i> Teams</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="states.html"><i class="fa fa-map-marker text-success"></i> States</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="seasons.html"><i class="fa fa-bookmark-o text-info "></i> Seasons</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="merchandising.html"><i class="fa fa-shopping-cart text-secondary" aria-hidden="true"></i> Merchandising</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="shop.html"><i class="fa fa-shopping-cart text-secondary" aria-hidden="true"></i> Shop</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="xxx.html"><i class="fa fa-magic" title="The party continues..."></i> &middot;&middot;&middot;</a></li>
                 </ul>
             </div>
@@ -79,11 +79,18 @@
         <div class="container">
             <div class="row" data-bind="foreach: records">
                 <div class="row col-3" >
+                    <!-- ko if: Flag!=null -->
                     <a data-bind="attr: { href:'./statesDetails.html?id=' + Id }"><img class="img-thumbnail flag" data-bind="attr:{src: Flag}" title="Show details"></a>
+                    <!-- /ko -->
+                    <!-- ko if: Flag==null -->
+                    <a data-bind="attr: { href:'./statesDetails.html?id=' + Id }"><img class="img-thumbnail flag" src="https://i.imgflip.com/7yndlx.jpg" title="Show details"></a>
+                    <!-- /ko -->
                     <span data-bind="text:Name" style="text-align: center"></span>
+
                 </div>
             </div>
         </div>
+        
     </div>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
