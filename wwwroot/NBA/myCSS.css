@@ -72,3 +72,29 @@ ul{
     width: 10%;
     padding: 0px 2px 0px 2px;
 }
+
+.profile{
+    height: 320px;
+    width: 240px;
+    object-fit: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.logo{
+    height: 320px;
+    width: 320px;
+    object-fit: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.flag{
+    width: 600px;
+    object-fit: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
