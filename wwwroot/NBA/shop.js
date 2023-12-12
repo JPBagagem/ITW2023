@@ -8,9 +8,11 @@ let quantity = document.querySelector('.quantity');
 
 openShopping.addEventListener('click', ()=>{
     body.classList.add('active');
+    body.classList.remove('inactive');
 })
 closeShopping.addEventListener('click', ()=>{
     body.classList.remove('active');
+    body.classList.add('inactive');
 })
 
 let products = [
@@ -59,7 +61,7 @@ function initApp(){
         newDiv.innerHTML = `
             <img src="${value.image}">
             <div class="title">${value.name}</div>
-            <div class="price">${value.price.toLocaleString()}</div>
+            <div class="price">${value.price.toLocaleString() + '€'}</div>
             <button onclick="addToCard(${key})">Adicionar ao carrinho</button>`;
         list.appendChild(newDiv);
     })
@@ -94,7 +96,7 @@ function reloadCard(){
                 listCard.appendChild(newDiv);
         }
     })
-    total.innerText = totalPrice.toLocaleString();
+    total.innerText = totalPrice.toLocaleString() + "€";
     quantity.innerText = count;
 }
 function changeQuantity(key, quantity){

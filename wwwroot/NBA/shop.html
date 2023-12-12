@@ -10,33 +10,30 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="myCSS.css" />
     <style>
-        .container{
+        .containershop{
             width: 1000px;
             margin: auto;
             transition: 0.5s;
         }
-        header{
-            display: grid;
-            grid-template-columns: 1fr 50px;
-            margin-top: 50px;
-        }
-        header .shopping{
+        .shopping{
             position: relative;
             text-align: right;
         }
-        header .shopping img{
+        .shopping img{
             width: 40px;
+            position: absolute;
+            z-index: -1;
+            top: 5px;
+            right: 10px;
         }
-        header .shopping span{
+        .shopping span{
             background: red;
             border-radius: 50%;
-            display: flex;
             justify-content: center;
             align-items: center;
             color: #fff;
             position: absolute;
-            top: -5px;
-            left: 80%;
+            right: 0px;
             padding: 3px 10px;
         }
         .list{
@@ -72,18 +69,22 @@
         }
         .card{
             position: fixed;
-            top:0;
-            left: 100%;
-            width: 500px;
+            top: 50px;
+            right: -45%;
+            width: 45%;
             background-color: #453E3B;
-            height: 100vh;
+            height: 90%;
             transition: 0.5s;
         }
-        .active .card{
-            left: calc(100% - 500px);
+        .inactive .card{
+            visibility: hidden;
         }
-        .active .container{
-        transform: translateX(-200px);
+        .active .containershop{
+            transform: translateX(30%);
+        }
+
+        .active .containershop{
+        transform: translateX(-30%);
         }
         .card h1{
             color: #E8BC0E;
@@ -139,7 +140,7 @@
         }
     </style>
 </head>
-<body class="">
+<body class="inactive">
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bluenav" id="navtop">
         <div class="container">
             <a class="navbar-brand" href="index.html" tabindex="NBA"><img src="NBAlogo.png" height="24" /></a>
@@ -172,10 +173,12 @@
             </button>
         </div>
     </nav>
-    <div class="container">
-        <header>
-            <h1>NBA Shop</h1>
-            <div class="shopping">
+    <div class="container containershop">
+        <div class="row">
+            <div class="col col-6">
+                <h1>NBA Shop</h1>
+            </div>
+            <div class="shopping col-6">
                 <img src="https://raw.githubusercontent.com/HoanghoDev/addtocardv2/773a2f3f4ef72d46fa2187b31211a7375524fa46/image/shopping.svg">
                 <span class="quantity">0</span>
             </div>
@@ -186,11 +189,11 @@
         </div>
     </div>
     <div class="card">
-        <h1>Card</h1>
+        <h1>Check Out</h1>
         <ul class="listCard">
         </ul>
         <div class="checkOut">
-            <div class="total">0</div>
+            <div class="total">0€</div>
             <div class="closeShopping">Close</div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 ﻿body {
     font-family: 'Open Sans', sans-serif;
-    margin: 56px 0 56px 0;
+    margin: 58px 0 58px 0;
 }
 
 /* button default
@@ -83,8 +83,7 @@ ul{
 }
 
 .logo{
-    height: 320px;
-    width: 320px;
+    width: 100%;
     object-fit: cover;
     background-position: center center;
     background-repeat: no-repeat;
