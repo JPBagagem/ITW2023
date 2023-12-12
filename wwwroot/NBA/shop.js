@@ -6,6 +6,7 @@ let body = document.querySelector('body');
 let total = document.querySelector('.total');
 let quantity = document.querySelector('.quantity');
 
+
 openShopping.addEventListener('click', ()=>{
     body.classList.add('active');
     body.classList.remove('inactive');

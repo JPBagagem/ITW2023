@@ -1,6 +1,6 @@
 ﻿body {
     font-family: 'Open Sans', sans-serif;
-    margin: 58px 0 58px 0;
+    margin: 56px 0 56px 0;
 }
 
 /* button default
@@ -9,6 +9,7 @@
     color: #333;
     background-color: #f8f9fa;
     border-color: #ccc;
+
 }
 
     .btn-default:focus {
@@ -22,6 +23,11 @@
         color: #333;
         background-color: #e6e6e6;
         border-color: #adadad;
+    }
+
+    .btn-table:hover{
+        color: #ffffff;
+        background-color: rgb(29, 67, 140);;
     }
 
 /* button-xs

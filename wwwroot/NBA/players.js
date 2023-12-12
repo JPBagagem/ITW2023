@@ -210,3 +210,21 @@ $(document).ready(function () {
 $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');
 })
+
+function tabelas(){
+    let tinicial=document.getElementById("inicial");
+    let tfotos=document.getElementById("foto");
+    let button=document.getElementById("btn-table");
+    if (tinicial.classList.contains("d-none")) {
+        tfotos.classList.add("d-none");
+        tinicial.classList.remove("d-none");
+        button.classList.add("fa-picture-o");
+        button.classList.remove("fa-table");
+    }
+    else {
+        tfotos.classList.remove("d-none");
+        tinicial.classList.add("d-none");
+        button.classList.remove("fa-picture-o");
+        button.classList.add("fa-table");
+    }
+}
