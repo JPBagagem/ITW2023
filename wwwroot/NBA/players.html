@@ -125,7 +125,7 @@
             <div class="row" data-bind="foreach: records">
                 <div class="row col-3" >
                     <!-- ko if: Photo!=null -->
-                    <a data-bind="attr: { href:'./playersDetails.html?id=' + Id }"><img class="img-thumbnail profile" data-bind="attr:{src: Photo}" title="Show details"></a>
+                    <a data-bind="attr: { href:'./playersDetails.html?id=' + Id }" style="text-align: center"><img class="img-thumbnail profile" data-bind="attr:{src: Photo}" title="Show details"></a>
                     <!-- /ko -->
                     <!-- ko if: Photo==null -->
                     <a data-bind="attr: { href:'./playersDetails.html?id=' + Id }"><img class="img-thumbnail profile" src="http://192.168.160.58/NBA/Images/fallback.png" title="Show details"></a>
