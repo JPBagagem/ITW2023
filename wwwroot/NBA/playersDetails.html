@@ -69,7 +69,7 @@
                     </div>
                     <div class="row border-bottom g-2" data-bind="visible: Birthdate() != '' && Birthdate() != null">
                         <div class="col-2">Birthdate</div>
-                        <div class="col-10"><a class="nav-link" data-bind="text:Birthdate"></a></div>
+                        <div class="col-10"><a class="nav-link" data-bind="text:Birthdate().substring(0,10)"></a></div>
                     </div>
                     <div class="row border-bottom g-2" data-bind="visible: PositionName() != '' && PositionName() != null">
                         <div class="col-2">Position</div>
@@ -77,7 +77,8 @@
                     </div>
                     <div class="row border-bottom g-2" data-bind="visible: Height() != '' && Height() != null">
                         <div class="col-2">Height</div>
-                        <div class="col-10"><a class="nav-link" data-bind="text: Height() + ' ft' "></a></div>
+                        <div class="col-8"><a class="nav-link" data-bind="text: Height() + ' ft' "></a></div>
+                        <div class="col-2"><button class="btn bg-primary text-light" id="btnheight">m</button></div>
                     </div>
                     <div class="row border-bottom g-2" data-bind="visible: Weight() != '' && Weight() != null">
                         <div class="col-2">Weight</div>
