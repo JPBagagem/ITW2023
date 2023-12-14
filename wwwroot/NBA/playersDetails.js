@@ -91,6 +91,7 @@ var vm = function () {
         }
     };
 
+
     //--- start ....
     showLoading();
     var pg = getUrlParameter('id');
@@ -110,9 +111,9 @@ $(document).ready(function () {
 
 $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');
-})
+});
 
-document.getElementById('btnSwitch').addEventListener('click',()=>{
+$('#cena').click(function(){
     let cabecalho = document.getElementById("navtop");
     let rodape = document.getElementById("navbutton");
     if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
@@ -129,8 +130,4 @@ document.getElementById('btnSwitch').addEventListener('click',()=>{
         rodape.classList.add("bluenav");
         rodape.classList.remove("rednav");
     }
-})
-
-$('#btnheight').click(function(){
-    console.log("fortnite")
 });
