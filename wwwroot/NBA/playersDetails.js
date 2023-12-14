@@ -113,7 +113,7 @@ $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');
 });
 
-$('#cena').click(function(){
+$('#btnSwitch').click(function(){
     let cabecalho = document.getElementById("navtop");
     let rodape = document.getElementById("navbutton");
     if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
@@ -130,4 +130,16 @@ $('#cena').click(function(){
         rodape.classList.add("bluenav");
         rodape.classList.remove("rednav");
     }
+});
+
+$('#heightconverter').click(function(){
+    var _altura = document.getElementById("altura").innerText
+    console.log(_altura.substring(_altura.length-1))
+    if (_altura.substring(_altura.length-1)=="t"){
+        $("#altura").text((parseFloat(_altura.substring(0,1)) * 0.3048 + parseFloat(_altura.substring(2,4))* 0.0254).toFixed(2) + " m")
+    }
+    else{
+        
+    }
+
 });

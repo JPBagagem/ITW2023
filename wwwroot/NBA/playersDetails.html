@@ -76,8 +76,8 @@
                     </div>
                     <div class="row border-bottom g-2" data-bind="visible: Height() != '' && Height() != null">
                         <div class="col-2">Height</div>
-                        <div class="col-8"><a class="nav-link" data-bind="text: Height() + ' ft' "></a></div>
-                        <button class="btn" id="cena">ere</button>
+                        <div class="col-8"><a class="nav-link" id="altura" data-bind="text: Height() + ' ft' "></a></div>
+                        <div><button class="btn" id="heightconverter">m</button></div>
                     </div>
                     <div class="row border-bottom g-2" data-bind="visible: Weight() != '' && Weight() != null">
                         <div class="col-2">Weight</div>
@@ -118,7 +118,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col col-6" data-bind="visible: Seasons().length>0">
+        <div class="col col-6" data-bind="visible: Seasons().length > 0">
             <h3>Seasons</h3><br>
             <table class="table table-striped table-sm small">
                 <thead class="table-secondary">
