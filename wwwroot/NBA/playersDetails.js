@@ -130,3 +130,7 @@ document.getElementById('btnSwitch').addEventListener('click',()=>{
         rodape.classList.remove("rednav");
     }
 })
+
+$('#btnheight').click(function(){
+    console.log("fortnite")
+});
