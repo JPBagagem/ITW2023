@@ -1,21 +1,23 @@
-let openShopping = document.querySelector('.shopping');
-let closeShopping = document.querySelector('.closeShopping');
+let openShopping = $('#bag');
+console.log(openShopping)
 let list = document.querySelector('.list');
 let listCard = document.querySelector('.listCard');
 let body = document.querySelector('body');
 let total = document.querySelector('.total');
-let quantity = document.querySelector('.quantity');
+let quantity = $('#quantity');
 
 
-openShopping.addEventListener('click', ()=>{
+$('#bag').on( "click", function(){
     console.log('active');
     body.classList.add('active');
     body.classList.remove('inactive');
-})
-closeShopping.addEventListener('click', ()=>{
-    body.classList.remove('active');
+    console.log($('.checkout'))
+});
+
+$('.closeShopping').click(function(){
     body.classList.add('inactive');
-})
+    body.classList.remove('active');
+});
 
 let products = [
     {

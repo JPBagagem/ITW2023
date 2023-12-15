@@ -71,24 +71,26 @@
             padding: 10px;
         }
         .card{
-            position: fixed;
+            position: absolute;
             top: 50px;
-            right: -45%;
-            width: 45%;
+            right: 0;
+            width: 30%;
             background-color: #453E3B;
             height: 90%;
-            transition: 0.5s;
         }
         .inactive .card{
             visibility: hidden;
+            transition: 0s;
         }
-        .active .containershop{
-            transform: translateX(30%);
+        .active .card{
+            visibility: visible;
         }
 
         .active .containershop{
-        transform: translateX(-30%);
+            transform: translateX(-30%);
+            transition: 0.3s;
         }
+
         .card h1{
             color: #E8BC0E;
             font-weight: 100;
@@ -181,9 +183,10 @@
             <div class="col col-6">
                 <h1>NBA Shop</h1>
             </div>
-            <div class="shopping col-6">
+            <div class="shopping col-6" id="bag">
                 <img src="https://cdn-icons-png.flaticon.com/512/2832/2832499.png">
-                <span class="quantity">0</span>
+                <span id="quantity">0</span>
+            </div>
         </div>
 
         <div class="list">
