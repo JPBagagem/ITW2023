@@ -133,13 +133,14 @@ $('#btnSwitch').click(function(){
 });
 
 $('#heightconverter').click(function(){
-    var _altura = document.getElementById("altura").innerText
-    console.log(_altura.substring(_altura.length-1))
+    var _altura = document.getElementById("altura").innerText;
+    console.log(_altura.substring(_altura.length-1));
     if (_altura.substring(_altura.length-1)=="t"){
-        $("#altura").text((parseFloat(_altura.substring(0,1)) * 0.3048 + parseFloat(_altura.substring(2,4))* 0.0254).toFixed(2) + " m")
+        $("#altura").text((parseFloat(_altura.substring(0,1)) * 0.3048 + parseFloat(_altura.substring(2,4))* 0.0254).toFixed(2) + " m");
     }
-    else{
-        
+    else {
+        let altft= parseFloat(_altura.substring(0,4) * 3.2808399)
+        $("#altura").text(Math.floor(altft) + "-" + parseFloat(Math.round((altft-Math.floor(altft))* 12)) + " ft");
     }
 
 });
