@@ -133,14 +133,31 @@ $('#btnSwitch').click(function(){
 });
 
 $('#heightconverter').click(function(){
-    var _altura = document.getElementById("altura").innerText;
+    var _altura = $("#altura").text();
+    console.log(_altura)
     console.log(_altura.substring(_altura.length-1));
     if (_altura.substring(_altura.length-1)=="t"){
         $("#altura").text((parseFloat(_altura.substring(0,1)) * 0.3048 + parseFloat(_altura.substring(2,4))* 0.0254).toFixed(2) + " m");
+        $('#heightconverter').text("Conververter para pés");
     }
     else {
         let altft= parseFloat(_altura.substring(0,4) * 3.2808399)
         $("#altura").text(Math.floor(altft) + "-" + parseFloat(Math.round((altft-Math.floor(altft))* 12)) + " ft");
+        $('#heightconverter').text("Conververter para metros");
+    }
+
+});
+
+$('#weightconverter').click(function(){
+    var _peso = $("#peso").text();
+    console.log(_peso.substring(_peso.length-1));
+    if (_peso.substring(_peso.length-1)=="b"){
+        $("#peso").text((parseFloat(_peso.substring(0,_peso.length-3)) * 0.45359237 ).toFixed(1) + " kg");
+        $('#weightconverter').text("Conververter para libras");
+    }
+    else {
+        $("#peso").text(Math.round(parseFloat(_peso.substring(0,_peso.length-3)) * 2.20462262 )  + " lb");
+        $('#weightconverter').text("Conververter para quilos");
     }
 
 });
