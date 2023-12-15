@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="myCSS.css" />
 </head>
 <body>
@@ -76,9 +77,17 @@
         </div>
         <!-- /ko -->
         <div class="row border-bottom g-2">
-            <div class="col-2">Photo</div><div class="small col-10">
+            <div class="col-2">Photo</div><div class="small col-10" style="padding: 10px 0 10px 0;">
                 <img class="img-thumbnail" data-bind="attr:{src: Photo()}"><br />
                 <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Photo }, text: Photo" target="_blank"></a>]
+            </div>
+        </div>
+        <div class="row border-bottom g-2">
+            <div class="col-2">Location</div><div class="small col-10" style="padding: 10px 0 10px 0;">
+                <iframe width="800" height="480" frameborder="0" marginheight="0" marginwidth="0"
+                    data-bind="attr:{src: 'https://www.openstreetmap.org/export/embed.html?bbox=' + Lon() +'%2C'+ Lat() +'%2C'+ Lon() +'%2C'+ Lat() +'&amp;layer=mapnik&amp;marker='+ Lat() +'%2C'+ Lon()}"
+                    style="border: 1px solid black; width: 100%"></iframe><br />
+                <small><a data-bind="attr:{href: 'https://www.openstreetmap.org/?mlat='+ Lat() +'&amp;mlon='+ Lon() +'#map=19/'+ Lat() +'/' + Lon()}" target="_blank">View Larger Map</a></small>
             </div>
         </div>
         <!-- /ko -->
@@ -112,6 +121,7 @@
     <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js" integrity="sha512-2AL/VEauKkZqQU9BHgnv48OhXcJPx9vdzxN1JrKDVc4FPU/MEE/BZ6d9l0mP7VmvLsjtYwqiYQpDskK9dG8KBA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="arenaDetails.js"></script>
 </body>
 </html>

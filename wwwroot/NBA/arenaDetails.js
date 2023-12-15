@@ -19,6 +19,8 @@ var vm = function () {
     self.Capacity = ko.observable('');
     self.Opened = ko.observable('');
     self.Photo = ko.observable('');
+    self.Lat = ko.observable('');
+    self.Lon = ko.observable('');
 
     //--- Page Events
     self.activate = function (id) {
@@ -35,6 +37,9 @@ var vm = function () {
             self.TeamName(data.TeamName);
             self.TeamAcronym(data.TeamAcronym);
             self.Location(data.Location);
+            self.Capacity(data.Capacity);
+            self.Lon(data.Lon);
+            self.Lat(data.Lat);
             self.Capacity(data.Capacity);
             if (data.Opened!=null){
                 self.Opened(data.Opened);
