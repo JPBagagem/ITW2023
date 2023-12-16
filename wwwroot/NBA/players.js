@@ -27,6 +27,10 @@ var vm = function () {
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
+    self.updateLocalStorage = (key, data) => {
+        localStorage.setItem(key, JSON.stringify(data))
+    }
+    self.SetFavourites = ko.observableArray(JSON.parse(localStorage.getItem("playerFavorites")));
     self.currentPage = ko.observable(1);
     self.pagesize = ko.observable(20);
     self.totalRecords = ko.observable(50);
@@ -72,7 +76,7 @@ var vm = function () {
             else {
                 self.activate(pg);
             }
-        } 
+        }
         else {
             var changeUrl = 'http://192.168.160.58/NBA/api/Players/Search?q=' + $("#searchbar").val();
             self.Playerslist = [];
@@ -156,6 +160,19 @@ var vm = function () {
                 self.error(errorThrown);
             }
         });
+    }
+    
+    self.favButton = (_data,_event) =>{
+        console.log(_event);
+        self.SetFavourites.push(_event)
+        self.updateLocalStorage("playerFavorites", self.SetFavourites())
+        _data.target.classList.remove('fa-heart-o');
+        _data.target.classList.add('fa-heart');
+        console.log(self.SetFavourites());
+    }
+
+    self.checkButton = function(id){
+        return self.SetFavourites().include(id);
     }
 
     function sleep(milliseconds) {
