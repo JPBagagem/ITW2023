@@ -18,6 +18,9 @@ var vm = function () {
     self.StateName = ko.observable('');
     self.City = ko.observable('');
     self.History = ko.observable('');
+    self.Seasons = ko.observable([]);
+    self.Players = ko.observable([]);
+    self.PlayersVisible = ko.observable([]);
 
     //--- Page Events
     self.activate = function (Id, acronimo) {
@@ -35,6 +38,9 @@ var vm = function () {
             self.StateId(data.StateId);
             self.StateName(data.StateName);
             self.City(data.City);
+            self.Seasons(data.Seasons);
+            self.Players(data.Players);
+            self.PlayersVisible(data.Players.slice(0,24));
             self.History(data.History);
             if (data.Logo==null){
                 self.Logo("https://images.gamebanana.com/img/ss/tuts/100-90_619fe17d4ff4c.jpg");
@@ -70,6 +76,11 @@ var vm = function () {
             $("#myModal").modal('hide');
         })
     }
+
+    $('#mostrar').click(function(){
+        var tamanho = self.PlayersVisible().length
+        self.PlayersVisible(self.Players().slice(0,tamanho + 24));
+    });
 
     function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1),
@@ -127,3 +138,4 @@ document.getElementById('btnSwitch').addEventListener('click',()=>{
         rodape.classList.remove("rednav");
     }
 })
+

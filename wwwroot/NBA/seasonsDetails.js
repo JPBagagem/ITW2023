@@ -11,6 +11,8 @@ var vm = function () {
     self.Id = ko.observable('');
     self.Season = ko.observable('');
     self.Teams = ko.observable([]);
+    self.Players = ko.observable([]);
+    self.PlayersVisible = ko.observable([]);
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getArena...');
@@ -21,6 +23,8 @@ var vm = function () {
             self.Id(data.Id);
             self.Season(data.Season);
             self.Teams(data.Teams);
+            self.Players(data.Players);
+            self.PlayersVisible(self.Players().slice(0,24));
         });
     };
 
@@ -52,6 +56,11 @@ var vm = function () {
             $("#myModal").modal('hide');
         })
     }
+
+    $('#mostrar').click(function(){
+        var tamanho = self.PlayersVisible().length
+        self.PlayersVisible(self.Players().slice(0,tamanho + 24));
+    });
 
     function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1),

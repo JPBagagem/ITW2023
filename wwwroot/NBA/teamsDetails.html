@@ -86,6 +86,27 @@
                 <!-- /ko -->
             </div>
         </div>
+        <div class="col col-12" data-bind="visible: Seasons().length > 0">
+            <h3>Seasons</h3><br>
+            <div class="container">
+                <div class="row" data-bind="foreach: Seasons">
+                    <div class="row col-6 col-sm-4 col-lg-2">
+                        <a class="nav-link" data-bind="attr: { href:'./seasonsDetails.html?id=' + Id }" style="border: 1px solid black; border-radius: 10px;"><span data-bind="text:Season" style="text-align: center"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col col-12" data-bind="visible: Players().length > 0">
+            <br><h3>Players</h3><br>
+            <div class="container">
+                <div class="row" data-bind="foreach: PlayersVisible">
+                    <div class="row col-6 col-sm-4 col-lg-2">
+                        <a class="nav-link" data-bind="attr: { href:'./playersDetails.html?id=' + Id }" style="border: 1px solid black; border-radius: 10px;"><span data-bind="text:Name" style="text-align: center"></span></a>
+                    </div>
+                </div>
+            </div>
+            <button class="btn" id="mostrar">Mostrar mais</button>
+        </div>
         <div class="small col-12" style="margin: 10px">
             <i class="fa fa-link"></i><a class="link text-decoration-none text-reset" data-bind="attr: { href: Logo }, text: ' [' + Logo() + ']' " target="_blank"></a>
         </div>

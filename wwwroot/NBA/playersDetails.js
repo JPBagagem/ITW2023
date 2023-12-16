@@ -35,7 +35,6 @@ var vm = function () {
             self.School(data.School);
             self.Weight(data.Weight);
             self.Height(data.Height);
-            self.Birthdate(data.Birthdate);
             self.PositionId(data.PositionId);
             self.PositionName(data.PositionName);
             self.Teams(data.Teams);
@@ -43,6 +42,12 @@ var vm = function () {
             self.Photo(data.Photo);
             if (data.Photo==null){
                 self.Photo("http://192.168.160.58/NBA/Images/fallback.png");
+            }
+            if (data.Birthdate==null){
+                self.Birthdate("");
+            }
+            else{
+                self.Birthdate(data.Birthdate);
             }
         });
     };
