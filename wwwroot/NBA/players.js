@@ -65,6 +65,16 @@ var vm = function () {
         return list;
     };
 
+    self.SetupFavourites = function(){
+        console.log("bruh");
+        var gostos = self.SetFavourites();
+        for (let i = 0; i < gostos.length; i++) {
+            console.log(gostos[i].Id);
+            $('#fav'+ gostos[i].Id).addClass('fa-heart');
+            $('#fav'+ gostos[i].Id).removeClass('fa-heart-o');
+        }
+    }
+
     self.search = function() { 
         console.log("searching")
         if ($("#searchbar").val() === "") {
@@ -140,7 +150,7 @@ var vm = function () {
             self.pagesize(data.PageSize)
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords);
-            //self.SetFavourites();
+            self.SetupFavourites();
         });
     };
 
@@ -164,15 +174,25 @@ var vm = function () {
     
     self.favButton = (_data,_event) =>{
         console.log(_event);
-        self.SetFavourites.push(_event)
-        self.updateLocalStorage("playerFavorites", self.SetFavourites())
-        _data.target.classList.remove('fa-heart-o');
-        _data.target.classList.add('fa-heart');
+        if (_data.target.classList.contains('fa-heart-o')){
+            self.SetFavourites.push(_event)
+            self.updateLocalStorage("playerFavorites", self.SetFavourites())
+            _data.target.classList.remove('fa-heart-o');
+            _data.target.classList.add('fa-heart');
+        }
+        else{
+            for (let i = 0; i < self.SetFavourites().length; i++) {
+                console.log(i)
+                if (self.SetFavourites()[i].Id== _event.Id){
+                    console.log(i)
+                    self.SetFavourites.splice(i,1)
+                    self.updateLocalStorage("playerFavorites", self.SetFavourites())
+                    _data.target.classList.remove('fa-heart');
+                    _data.target.classList.add('fa-heart-o');
+                }
+            }
+        }
         console.log(self.SetFavourites());
-    }
-
-    self.checkButton = function(id){
-        return self.SetFavourites().include(id);
     }
 
     function sleep(milliseconds) {
