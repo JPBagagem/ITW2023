@@ -3,7 +3,7 @@ console.log(openShopping)
 let list = document.querySelector('.list');
 let listCard = document.querySelector('.listCard');
 let body = document.querySelector('body');
-let total = document.querySelector('.total');
+let total = $('.total');
 let quantity = $('#quantity');
 
 
@@ -18,6 +18,13 @@ $('#bag').on( "click", function(){
 $('.closeShopping').click(function(){
     body.classList.add('inactive');
     body.classList.remove('active');
+
+});
+
+$('.total').click(function(){
+    localStorage.setItem("quantidadepagar", JSON.stringify(total.text()))
+    window.location.replace("checkout.html");
+
 });
 
 let products = [
@@ -101,7 +108,7 @@ function reloadCard(){
                 listCard.appendChild(newDiv);
         }
     })
-    total.innerText = totalPrice.toLocaleString() + "€";
+    total.text(totalPrice + "€") ;
     quantity.text(count);
 }
 function changeQuantity(key, quantity){
