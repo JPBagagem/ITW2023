@@ -113,9 +113,6 @@ var vm = function () {
                         return item.Name;
                     }));
                 },
-                error: function(result) {
-                    alert(result.statusText);
-                },
             });
         },
         select: function (e, ui) {

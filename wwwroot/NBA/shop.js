@@ -11,7 +11,8 @@ $('#bag').on( "click", function(){
     console.log('active');
     body.classList.add('active');
     body.classList.remove('inactive');
-    console.log($('.checkout'))
+    console.log($('.checkout'));
+    console.log(quantity.innerText);
 });
 
 $('.closeShopping').click(function(){
@@ -81,7 +82,7 @@ function addToCard(key){
 }
 function reloadCard(){
     listCard.innerHTML = '';
-    let count = 0;
+    count = 0;
     let totalPrice = 0;
     listCards.forEach((value, key)=>{
         totalPrice = totalPrice + value.price;
@@ -101,7 +102,7 @@ function reloadCard(){
         }
     })
     total.innerText = totalPrice.toLocaleString() + "€";
-    quantity.innerText = count;
+    quantity.text(count);
 }
 function changeQuantity(key, quantity){
     if(quantity == 0){
