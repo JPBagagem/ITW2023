@@ -13,7 +13,7 @@ var options = {
     legend: { position: 'none' },
     height: 3000,
     hAxis: { textStyle: { fontSize: 11, fontName: 'Open Sans' } },
-    vAxis: { textStyle: { fontSize: 11, fontName: 'Open Sans' } }
+    vAxis: { textStyle: { fontSize: 11, fontName: 'Open Sans' } },
 };
 
 // Callback that creates and populates a data table,
