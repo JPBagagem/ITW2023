@@ -1,7 +1,6 @@
 ﻿<!doctype html>
 <html lang="en" data-bs-theme="ligth">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>ITW 2023/24 - NBA Arenas List</title>
@@ -11,6 +10,196 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="myCSS.css" />
+    <style>
+        * {
+  font-family: Nunito, sans-serif;
+}
+
+.text-blk {
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  line-height: 25px;
+}
+
+.responsive-container-block {
+  min-height: 75px;
+  height: fit-content;
+  width: 100%;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+  justify-content: flex-start;
+}
+
+.responsive-container-block.bigContainer {
+  padding-top: 10px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  background-image: url("https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/bb29.png");
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: cover;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: initial;
+  background-repeat-x: no-repeat;
+  background-repeat-y: no-repeat;
+}
+
+.responsive-container-block.Container {
+  max-width: 800px;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  margin-top: 150px;
+  margin-right: auto;
+  margin-bottom: 150px;
+  margin-left: auto;
+  background-color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.text-blk.heading {
+  font-size: 36px;
+  line-height: 45px;
+  font-weight: 800;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 30px;
+  margin-left: 0px;
+}
+
+.text-blk.subHeading {
+  text-align: center;
+  font-size: 18px;
+  line-height: 26px;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 60px;
+  margin-left: 0px;
+}
+
+.socialIcon {
+  width: 33px;
+  height: 33px;
+}
+
+.social-icons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.social-icon {
+  margin: 0 50px 0 50px;
+}
+
+.social-icon:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .text-blk.heading {
+    font-size: 55px;
+    line-height: 65px;
+  }
+
+  .text-blk.subHeading {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .socialIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .text-blk.subHeading {
+    line-height: 27px;
+  }
+
+  .text-blk.heading {
+    font-size: 32px;
+    line-height: 40px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+  }
+
+  .social-icon {
+    margin: 0 25px 0 25px;
+  }
+}
+
+@media (max-width: 500px) {
+  .responsive-container-block.bigContainer {
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+  }
+
+  .text-blk.heading {
+    font-size: 45px;
+    line-height: 55px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+  }
+
+  .text-blk.subHeading {
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 30px;
+    margin-left: 0px;
+  }
+
+  .social-icons-container {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .text-blk.subHeading {
+    font-size: 16px;
+    line-height: 23px;
+  }
+
+  .text-blk.heading {
+    font-size: 26px;
+    line-height: 30px;
+  }
+
+  .social-icon {
+    margin: 0 20px 0 20px;
+  }
+}
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bluenav" id="navtop">
@@ -56,6 +245,70 @@
                 <div class="modal-body text-center">
                     <i class="fa fa-spin fa-3x fa-refresh"></i>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="responsive-container-block bigContainer">
+        <div class="responsive-container-block Container">
+          <p class="text-blk heading">
+            About Us
+          </p>
+          <p class="text-blk subHeading">
+            No nosso empolgante projeto da criação de um site, encontramos a harmonia perfeita entre HTML, CSS, JS, Ajax, jQuery e Knockout. Cada linha de código é uma peça vital, tecendo a narrativa digital que tanto amamos construir e que não nos tirou nenhumas horas de sono!
+          </p>
+          <div class="social-icons-container">
+            <a href="https://www.facebook.com/nba/?locale=pt_PT" class="social-icon">
+              <img class="socialIcon image-block" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/bb33.png">
+            </a>
+            <a href="https://www.instagram.com/nba/" class="social-icon">
+              <img class="socialIcon image-block" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/bb35.png">
+            </a>
+            <a href="https://twitter.com/NBA" class="social-icon">
+              <img class="socialIcon image-block" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/bb36.png">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion" id="accordionExample" style="margin-top: 0px; margin-bottom: 100px">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Projeto
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body" style="text-align: center;">
+                    <p>Com este trabalho conseguimos aplicar as aprendizagens que obtivemos ao longo de todo o semestre na cadeira de ITW.</p> 
+                    <p>E assim, com muito suor e lágrimas, conseguimos desenvolver este site que tem por tópico a <strong><a href="https://www.nba.com">NBA</a></strong></p> 
+                    <p>Obrigado por <i>toda a paciência</i> que tem connosco, professor!</p>
+                    <p>Esperamos que gostem do nosso site!</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Grupo
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body" style="text-align: center;">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <strong>José Bagagem</strong>
+                            <p><a href="mailto:@ua.pt" class="text-decoration-none text-muted">@ua.pt</a></p>
+                          
+                            
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                         <strong>Henrique Lopes</strong>
+                         <p><a href="mailto:henriquelopes@ua.pt" class="text-decoration-none text-muted">henriquelopes@ua.pt</a></p>
+                     </div>
+                        
+                    </div>
+                 </div>
             </div>
         </div>
     </div>
