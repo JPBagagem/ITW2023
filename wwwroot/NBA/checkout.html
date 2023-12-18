@@ -2,9 +2,11 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title> Responsive Registration Form | CodingLab </title>
+    <title> Checkout </title>
     <link rel="stylesheet" href="myCSS.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="checkout.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">>
     <style>
         * {
             margin: 0;
@@ -175,66 +177,91 @@
             }
         }
 
+        #mbwayNumber {
+            display: none;
+        }
+
+        .payment-input {
+            display: none;
+        }
+
+        .payment-input {
+            display: none;
+        }
+
+        /* Adicione um estilo para o campo de preço */
+        .price-input {
+            width: 100%;
+            height: 45px;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #e53935;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+            float: right;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="title">Registo</div>
+        <div class="title">Pagamento</div>
         <div class="content">
             <form action="#">
                 <div class="user-details">
+                    <input type="text" class="price-input" id="price" placeholder="Preço">
                     <div class="input-box">
-                        <span class="details">Nome completo</span>
-                        <input type="text" placeholder="Esreva o seu nome" required>
+                        <span class="details">Nome</span>
+                        <input type="text" placeholder="Esreva o seu nome">
                     </div>
                     <div class="input-box">
-                        <span class="details">Username</span>
-                        <input type="text" placeholder="Escreva o seu username" required>
+                        <span class="details">Sobrenome</span>
+                        <input type="text" placeholder="Escreva o seu username">
                     </div>
                     <div class="input-box">
                         <span class="details">Email</span>
-                        <input type="text" placeholder="Coloque o seu email" required>
+                        <input type="text" placeholder="Coloque o seu email">
                     </div>
                     <div class="input-box">
                         <span class="details">Número de telemóvel</span>
-                        <input type="text" placeholder="Coloque o seu número" required>
+                        <input type="text" placeholder="Coloque o seu número">
                     </div>
                     <div class="input-box">
                         <span class="details">Password</span>
-                        <input type="text" placeholder="Coloque a password" required>
+                        <input type="text" placeholder="Coloque a password">
                     </div>
                     <div class="input-box">
                         <span class="details">Confirmar Password</span>
-                        <input type="text" placeholder="Confirme a sua password" required>
+                        <input type="text" placeholder="Confirme a sua password">
                     </div>
                 </div>
                 <div class="gender-details">
                     <input type="radio" name="gender" id="dot-1">
-                    <input type="radio" name="gender" id="dot-2">
-                    <input type="radio" name="gender" id="dot-3">
-                    <span class="gender-title">Género</span>
+                    <input type="radio" name="gender" id="dot-2">                   
+                    <span class="gender-title">Método de Pagamento</span>
                     <div class="category">
                         <label for="dot-1">
                             <span class="dot one"></span>
-                            <span class="gender">Masculino</span>
+                            <span class="gender">Cartão</span>
                         </label>
+                        <input type="text" class="payment-input" id="cardNumber" placeholder="Número do Cartão">
                         <label for="dot-2">
                             <span class="dot two"></span>
-                            <span class="gender">Feminino</span>
+                            <span class="gender">MBway</span>
                         </label>
-                        <label for="dot-3">
-                            <span class="dot three"></span>
-                            <span class="gender">Prefiro não dizer</span>
-                        </label>
+                        <input type="text" id="mbwayNumber" style="display: none;" placeholder="Número MBway">
                     </div>
                 </div>
-                <div class="button" onclick="window.location.href='compras.html';">
+                <a class="button" href="index.html">
                     <input type="submit" value="Registar">
-                </div>
+                </a>
 
             </form>
             </div>
         </div>
-
+        
 </body>
 </html>
