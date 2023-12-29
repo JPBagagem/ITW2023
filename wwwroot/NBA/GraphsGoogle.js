@@ -21,18 +21,13 @@ var options = {
     },
     series: {
         0: {
-            color: 'red'
+            color: 'rgb(203, 15, 40)'
         },
         1: {
-            color: 'maroon'
+            color: 'rgb(29, 67, 140)'
         },
-        2: {
-            color: '#338067'
-        },
-        3: {
-            color: '#FC53D2'
-        }
-    }
+    },
+    legend: {position: 'top', maxLines: 2},
 };
 
 // Callback that creates and populates a data table,
@@ -49,7 +44,6 @@ function drawChart() {
         $.each(stats, function (index, item) {
 
             if (item.SeasonType== "Regular Season"){
-                console.log(playoffs)
                 data.addRow([item.Season, item.Players, playoffs]);
             }
             else{
