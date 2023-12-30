@@ -7,7 +7,6 @@ var vm = function () {
     self.displayName = 'NBA Player Details';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
-    self.darktolight = ko.observable(JSON.parse(localStorage.getItem("darktolight")))
     //--- Data Record
     self.Id = ko.observable('');
     self.Name = ko.observable('');
@@ -25,25 +24,12 @@ var vm = function () {
     self.updateLocalStorage = (key, data) => {
         localStorage.setItem(key, JSON.stringify(data))
     }
-    self.darkSetup = function(){
-        let cabecalho = document.getElementById("navtop");
-        let rodape = document.getElementById("navbutton");
-        console.log(self.darktolight())
-        if (self.darktolight() == 'dark') {
-            document.documentElement.setAttribute('data-bs-theme','dark')
-            cabecalho.classList.remove("bluenav");
-            cabecalho.classList.add("rednav");
-            rodape.classList.remove("rednav");
-            rodape.classList.add("bluenav");
-        }
-    }
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getArena...');
         var composedUri = self.baseUri() + id;
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
-            self.darkSetup();
             hideLoading();
             self.Id(data.Id);
             self.Name(data.Name);
@@ -112,30 +98,6 @@ var vm = function () {
             }
         }
     };
-
-    $('#btnSwitch').click(function(){
-        let cabecalho = document.getElementById("navtop");
-        let rodape = document.getElementById("navbutton");
-        console.log(self.darktolight())
-        if (self.darktolight() == 'dark') {
-            self.darktolight('light')
-            self.updateLocalStorage("darktolight", 'light')
-            document.documentElement.setAttribute('data-bs-theme','light')
-            cabecalho.classList.add("bluenav");
-            cabecalho.classList.remove("rednav");
-            rodape.classList.add("rednav");
-            rodape.classList.remove("bluenav");
-        }
-        else {
-            self.darktolight('dark')
-            self.updateLocalStorage("darktolight", 'dark')
-            document.documentElement.setAttribute('data-bs-theme','dark')
-            cabecalho.classList.add("rednav");
-            cabecalho.classList.remove("bluenav");
-            rodape.classList.add("bluenav");
-            rodape.classList.remove("rednav");
-        }
-    })
 
     //--- start ....
     showLoading();
