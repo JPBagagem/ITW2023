@@ -23,7 +23,7 @@ $('.closeShopping').click(function(){
 
 $('.total').click(function(){
     localStorage.setItem("quantidadepagar", JSON.stringify(total.text()))
-    window.location.replace("checkout.html");
+    if ($('.total').text() != "Adicione algo ao carrinho" && $('.total').text() !="Pagar: 0.00€") {window.location.replace("checkout.html")};
 
 });
 
@@ -74,7 +74,7 @@ function initApp(){
             <img src="${value.image}">
             <div class="title text-dark">${value.name}</div>
             <div class="price text-dark">${value.price.toLocaleString() + '€'}</div>
-            <button onclick="addToCard(${key})">Adicionar ao carrinho</button>`;
+            <button class="btn" onclick="addToCard(${key})">Adicionar ao carrinho</button>`;
         list.appendChild(newDiv);
     })
 }
@@ -84,6 +84,10 @@ function addToCard(key){
         // copy product form list to list card
         listCards[key] = JSON.parse(JSON.stringify(products[key]));
         listCards[key].quantity = 1;
+    }
+    else{
+        console.log(listCards[key])
+        changeQuantity(key, listCards[key].quantity + 1)
     }
     reloadCard();
 }
@@ -99,7 +103,7 @@ function reloadCard(){
             newDiv.innerHTML = `
                 <div><img src="${value.image}"/></div>
                 <div>${value.name}</div>
-                <div>${value.price.toLocaleString()}</div>
+                <div>${value.price.toLocaleString()+ "€"}</div>
                 <div>
                     <button onclick="changeQuantity(${key}, ${value.quantity - 1})">-</button>
                     <div class="count">${value.quantity}</div>
@@ -108,7 +112,7 @@ function reloadCard(){
                 listCard.appendChild(newDiv);
         }
     })
-    total.text(totalPrice + "€") ;
+    total.text("Pagar: " + totalPrice.toFixed(2) + "€") ;
     quantity.text(count);
 }
 function changeQuantity(key, quantity){
