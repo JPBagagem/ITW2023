@@ -13,9 +13,10 @@ var vm = function () {
     self.Teams = ko.observable([]);
     self.Players = ko.observable([]);
     self.PlayersVisible = ko.observable([]);
+    self.top5 = ko.observable([]);
     //--- Page Events
     self.activate = function (id) {
-        console.log('CALL: getArena...');
+        console.log('CALL: getSeasons...');
         var composedUri = self.baseUri() + id;
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
@@ -25,6 +26,13 @@ var vm = function () {
             self.Teams(data.Teams);
             self.Players(data.Players);
             self.PlayersVisible(self.Players().slice(0,24));
+            console.log(self.Season());
+        });
+        ajaxHelper('http://192.168.160.58/NBA/api/Statistics/Top5RankedPlayerByRegularSeason', 'GET').done(function (data) {
+            $.each(data, function (index, item) {
+                if (item.Season.substring(0,4) == id) self.top5(item.Players);
+            })
+            console.log(self.top5())
         });
     };
 
