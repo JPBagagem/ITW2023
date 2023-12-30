@@ -1,37 +1,40 @@
 var darktolight = JSON.parse(localStorage.getItem("darktolight"))
 var darkbutton = document.getElementById("btnSwitch")
 function darkSetup() {
-    let cabecalho = document.getElementById("navtop");
-    let rodape = document.getElementById("navbutton");
-    console.log(darktolight)
+    let vermelhos = document.querySelectorAll(".rednav");
+    let azuis = document.querySelectorAll(".bluenav");
     document.documentElement.setAttribute('data-bs-theme','dark')
-    cabecalho.classList.remove("bluenav");
-    cabecalho.classList.add("rednav");
-    rodape.classList.remove("rednav");
-    rodape.classList.add("bluenav");
+    for(i=0; i < vermelhos.length;i++){
+        vermelhos[i].classList.remove("rednav");
+        vermelhos[i].classList.add("bluenav");
+    }
+    for(i=0; i < azuis.length;i++){
+        azuis[i].classList.remove("bluenav");
+        azuis[i].classList.add("rednav");
+    }
 }
 
 if (darktolight == 'dark') darkSetup()
 
 darkbutton.addEventListener("click", function(){
-    let cabecalho = document.getElementById("navtop");
-    let rodape = document.getElementById("navbutton");
+    let vermelhos = document.querySelectorAll(".rednav");
+    let azuis = document.querySelectorAll(".bluenav");
     if (darktolight == 'dark') {
         darktolight='light'
         localStorage.setItem("darktolight", JSON.stringify('light'))
         document.documentElement.setAttribute('data-bs-theme','light')
-        cabecalho.classList.add("bluenav");
-        cabecalho.classList.remove("rednav");
-        rodape.classList.add("rednav");
-        rodape.classList.remove("bluenav");
     }
     else {
         darktolight='dark'
         localStorage.setItem("darktolight", JSON.stringify('dark'))
         document.documentElement.setAttribute('data-bs-theme','dark')
-        cabecalho.classList.add("rednav");
-        cabecalho.classList.remove("bluenav");
-        rodape.classList.add("bluenav");
-        rodape.classList.remove("rednav");
+    }
+    for(i=0; i < vermelhos.length;i++){
+        vermelhos[i].classList.remove("rednav");
+        vermelhos[i].classList.add("bluenav");
+    }
+    for(i=0; i < azuis.length;i++){
+        azuis[i].classList.remove("bluenav");
+        azuis[i].classList.add("rednav");
     }
 })
