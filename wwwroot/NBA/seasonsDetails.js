@@ -14,6 +14,7 @@ var vm = function () {
     self.Players = ko.observable([]);
     self.PlayersVisible = ko.observable([]);
     self.top5 = ko.observable([]);
+    self.primeiro = ko.observable("");
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getSeasons...');
@@ -32,7 +33,9 @@ var vm = function () {
             $.each(data, function (index, item) {
                 if (item.Season.substring(0,4) == id) self.top5(item.Players);
             })
-            console.log(self.top5())
+            self.primeiro(self.top5()[0])
+            console.log(self.primeiro().PlayerId)
+            console.log(typeof self.top5()[2])
         });
     };
 
