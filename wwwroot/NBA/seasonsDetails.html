@@ -94,17 +94,20 @@
             </div>
             <button class="btn" id="mostrar">Mostrar mais</button>
         </div>
-        <div class="row col-2" data-bind="foreach: top5">
+        <div class="row" data-bind="foreach: top5">
+            <div class="row col-4 col-lg-2" data-bind="class: 'rank' + Rank">
                 <!-- ko if: PlayerPhoto!=null -->
-                <a data-bind="attr: { href:'./playersDetails.html?id=' + PlayerId }, class: 'rank' + Rank" style="text-align: center"><img class="img-thumbnail profilinho" data-bind="attr:{src: PlayerPhoto}" title="Show details"></a>
+                <a data-bind="attr: { href:'./playersDetails.html?id=' + PlayerId }" style="text-align: center"><img class="img-thumbnail profilinho" data-bind="attr:{src: PlayerPhoto}" title="Show details"></a>
                 <!-- /ko -->
                 <!-- ko if: PlayerPhoto==null -->
-                <a data-bind="attr: { href:'./playersDetails.html?id=' + PlayerId }, class: 'rank' + Rank"><img class="img-thumbnail profilinho" src="http://192.168.160.58/NBA/Images/fallback.png" title="Show details"></a>
+                <a data-bind="attr: { href:'./playersDetails.html?id=' + PlayerId }"><img class="img-thumbnail profilinho" src="http://192.168.160.58/NBA/Images/fallback.png" title="Show details"></a>
                 <!-- /ko -->
                 <div style="text-align: center"><a data-bind="text:PlayerName"></a></div>
+            </div>
         </div>
-        <div class="row">
-            <div class="row"><img class="col-10"style="position: relative; z-index: -1;"src="podio.png"></div>
+        <div class="row" style="position: relative; z-index: -1;">
+            <div class="row col-10"><img class="d-none d-lg-block" src="podio.png"></div>
+            <div class="row col-12"><img class="d-lg-none" src="podio3.png"></div>
         </div>
         <br><a href="./seasons.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a><br>
     </div>

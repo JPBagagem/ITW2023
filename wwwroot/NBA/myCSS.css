@@ -121,5 +121,118 @@ ul{
 }
 
 .rank1{
-    background-color: blue
+    position: relative;
+    left: 33.5%
+}
+
+.rank2{
+    position: relative;
+    left: 2.5%;
+    top: 95px;
+}
+
+.rank3{
+    position: relative;
+    left: 20.5%;
+    top: 160px;
+}
+
+.rank4{
+    position: relative;
+    left: -43.5%;
+    top: 210px;
+}
+
+.rank5{
+    position: relative;
+    left: 6.5%;
+    top: 270px;
+}
+
+@media(max-width: 1400px){
+    .profilinho{
+        height: 200px;
+    }
+    .rank1{
+        top: 10px;
+    }
+    .rank2{
+        left: 3.5%;
+        top: 85px;
+    }
+    .rank3{
+        left: 19.5%;
+        top: 140px;
+    }
+    .rank4{
+        left: -41.5%;
+        top: 195px;
+    }
+    .rank5{
+        left: 6%;
+        top: 235px;
+    }
+}
+
+@media(max-width: 1200px){
+    .profilinho{
+        height: 160px;
+    }
+    .rank2{
+        position: relative;
+        left: 3.5%;
+        top: 60px;
+    }
+    .rank3{
+        left: 20.5%;
+        top: 110px;
+    }
+    .rank4{
+        left: -39.5%;
+        top: 155px;
+    }
+    .rank5{
+        left: 7%;
+        top: 195px;
+    }
+}
+
+@media(max-width: 992px){
+    .profilinho{
+        height: 240px;
+    }
+    .rank1{ 
+        top: 250px;
+    }
+    .rank2{ 
+        left: -28%;
+        top: 350px;
+    }
+    .rank3{
+        left:4.5%;
+        top: 420px;
+    }
+    .rank4{
+        visibility: hidden;
+    }
+    .rank5{
+        visibility: hidden;
+    }
+}
+
+@media(max-width: 768px){
+    .profilinho{
+        height: 170px;
+    }
+    .rank1{ 
+        top: 190px;
+    }
+    .rank2{ 
+        left: -28%;
+        top: 250px;
+    }
+    .rank3{
+        left:4.5%;
+        top: 300px;
+    }
 }
