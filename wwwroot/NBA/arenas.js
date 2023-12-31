@@ -13,6 +13,9 @@ var vm = function () {
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
+    self.updateLocalStorage = (key, data) => {
+        localStorage.setItem(key, JSON.stringify(data))
+    };
     self.previousPage = ko.computed(function () {
         return self.currentPage() * 1 - 1;
     }, self);
@@ -190,27 +193,3 @@ $(document).ready(function () {
 $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');
 })
-
-document.getElementById('btnSwitch').addEventListener('click',()=>{
-    let cabecalho = document.getElementById("navtop");
-    let rodape = document.getElementById("navbutton");
-    if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
-        document.documentElement.setAttribute('data-bs-theme','light')
-        cabecalho.classList.add("bluenav");
-        cabecalho.classList.remove("rednav");
-        rodape.classList.add("rednav");
-        rodape.classList.remove("bluenav");
-    }
-    else {
-        document.documentElement.setAttribute('data-bs-theme','dark')
-        cabecalho.classList.add("rednav");
-        cabecalho.classList.remove("bluenav");
-        rodape.classList.add("bluenav");
-        rodape.classList.remove("rednav");
-    }
-})
-
-$(document).ready(function () {
-    console.log("ready!");
-    ko.applyBindings(new vm());
-});

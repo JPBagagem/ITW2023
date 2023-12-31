@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Validar os campos
-        const nome = document.querySelector('input[placeholder="Esreva o seu nome"]');
+        const nome = document.querySelector('input[placeholder="Escreva o seu nome"]');
         const sobrenome = document.querySelector('input[placeholder="Escreva o seu username"]');
         const email = document.querySelector('input[placeholder="Coloque o seu email"]');
         const numeroTelemovel = document.querySelector('input[placeholder="Coloque o seu número"]');
@@ -90,4 +90,5 @@ $(document).ready(function () {
             $('#mbwayNumber').show();
         }
     });
+    $("#price").text(localStorage.getItem("quantidadepagar").replace('"','').replace('"',''))
 });

@@ -25,5 +25,5 @@ function validatecor() {
         alert("Escolhe uma cor")
 
     }
-    ret
+    return retVal
 }

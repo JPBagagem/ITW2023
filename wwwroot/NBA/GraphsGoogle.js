@@ -14,6 +14,20 @@ var options = {
     height: 3000,
     hAxis: { textStyle: { fontSize: 11, fontName: 'Open Sans' } },
     vAxis: { textStyle: { fontSize: 11, fontName: 'Open Sans' } },
+    animation:{
+        duration: 1000,
+        easing: 'out',
+        startup: true
+    },
+    series: {
+        0: {
+            color: 'rgb(203, 15, 40)'
+        },
+        1: {
+            color: 'rgb(29, 67, 140)'
+        },
+    },
+    legend: {position: 'top', maxLines: 2},
 };
 
 // Callback that creates and populates a data table,
@@ -22,16 +36,26 @@ var options = {
 function drawChart() {
     // Create our data table.
     var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Season'); // Implicit domain label col.
-    data.addColumn('number', 'Players'); // Implicit series 1 data col.
+    data.addColumn('string', 'Season', ); // Implicit domain label col.
+    data.addColumn('number', 'Players in Regular Season'); // Implicit series 1 data col.
+    data.addColumn('number', 'Players in Playoffs'); // Implicit domain label col.
     ajaxHelper(composedUri, 'GET').done(function (stats) {
         // Interact with the data returned
         $.each(stats, function (index, item) {
-            data.addRow([item.Season + " " + item.SeasonType, item.Players]);
+
+            if (item.SeasonType== "Regular Season"){
+                data.addRow([item.Season, item.Players, playoffs]);
+            }
+            else{
+                playoffs= item.Players
+            }
         })
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.charts.Bar(document.getElementById('chart_div'));
         chart.draw(data, options);
+        setTimeout(() => {
+            document.getElementById('chart_div').classList.remove('animated-chart-start')
+        }, 100)
     });
 }
 

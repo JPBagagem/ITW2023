@@ -10,17 +10,27 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <style>
+        .animated-chart g:nth-of-type(3) {
+            transition: 0.5s;
+            transform: scaleX(1);
+            transform-origin: 70px 0;
+        }
+        .animated-chart.animated-chart-start g:nth-of-type(3) {
+            transform: scaleX(0);
+        }
+    </style>
 </head>
 <body>
     <div class="container"></div>
         <!--Div that will hold the pie chart-->
-        <div id="chart_div" style="height:100%; margin:10px;"></div>
+        <div id="chart_div" style="height:100%; margin:10px; width:90%" class="animated-chart animated-chart-start"></div>
     </div>
 
     <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/jquery/dist/jquery.min.js"></script>
     <!--Load the AJAX API-->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="GraphsGoogle.js"></script>
 </body>
 </html>

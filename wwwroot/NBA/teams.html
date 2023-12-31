@@ -104,7 +104,7 @@
                     <td class="align-middle" data-bind="text: Name"></td>
                     <td class="align-middle" data-bind="text: ConferenceName"></td>
                     <td class="align-middle" data-bind="text: DivisionName"></td>
-                    <td class="align-middle" data-bind="text: StateId"></td>
+                    <td class="align-middle"><a class="nav-link" data-bind="text: StateId, attr: { href:'./statesDetails.html?id=' + StateId}"></a></td>
                     <td class="align-middle" data-bind="text: City"></td>
                     
                     <td class="text-end">
@@ -134,7 +134,6 @@
     <nav class="navbar navbar-dark fixed-bottom rednav" id="navbutton">
         <div class="container small">
             <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2023/24</div>
-            <div class="navbar-text">Made with <i class="fa fa-heart-o"></i> for U by <a href="mailto:jsp@ua.pt" class="text-decoration-none">jsp@ua.pt</a>.</div>
             <div class="navbar-nav">    
                 <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
             </div>
@@ -144,6 +143,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="script.js"></script>
     <script src="teams.js"></script>
 </body>
 </html>
