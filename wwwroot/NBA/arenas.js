@@ -206,6 +206,7 @@ var vm = function () {
 
     //--- start ....
     showLoading();
+    if (JSON.parse(localStorage.getItem("tabela?"))== "yes")tabelas()
     var pg = getUrlParameter('page');
     console.log(pg);
     if (pg == undefined)
@@ -231,9 +232,11 @@ function tabelas(){
     if (mapa.classList.contains("d-none")) {
         tabela.classList.add("d-none");
         mapa.classList.remove("d-none");
+        localStorage.setItem("tabela?", JSON.stringify('no'))
     }
     else {
         tabela.classList.remove("d-none");
         mapa.classList.add("d-none");
+        localStorage.setItem("tabela?", JSON.stringify('yes'))
     }
 }

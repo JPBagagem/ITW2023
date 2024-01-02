@@ -65,10 +65,10 @@ var vm = function () {
             else {
                 self.activate(pg);
             }
-        }
+        } 
         else {
             var changeUrl = 'http://192.168.160.58/NBA/api/Players/Search?q=' + $("#searchbar").val();
-            self.Playerslist = [];
+            self.arenaslist = [];
             ajaxHelper(changeUrl, 'GET').done(function(data) {
                 console.log(data.length)
                 if (data.length == 0) {
@@ -81,7 +81,7 @@ var vm = function () {
                 self.totalRecords(data.length);
                 hideLoading();
                 for (var i in data) {
-                    self.Playerslist.push(data[i]);
+                    self.arenaslist.push(data[i]);
                 }
             });
         };
@@ -203,6 +203,7 @@ var vm = function () {
 
     //--- start ....
     showLoading();
+    if (JSON.parse(localStorage.getItem("tabela?"))== "yes") tabelas()
     var pg = getUrlParameter('page');
     console.log(pg);
     if (pg == undefined)
@@ -231,11 +232,13 @@ function tabelas(){
         tinicial.classList.remove("d-none");
         button.classList.add("fa-picture-o");
         button.classList.remove("fa-table");
+        localStorage.setItem("tabela?", JSON.stringify('no'))
     }
     else {
         tfotos.classList.remove("d-none");
         tinicial.classList.add("d-none");
         button.classList.remove("fa-picture-o");
         button.classList.add("fa-table");
+        localStorage.setItem("tabela?", JSON.stringify('yes'))
     }
 }
