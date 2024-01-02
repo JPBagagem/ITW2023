@@ -224,3 +224,16 @@ $(document).ready(function () {
 $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');
 })
+
+function tabelas(){
+    let mapa=document.getElementById("mapa");
+    let tabela=document.getElementById("tabela");
+    if (mapa.classList.contains("d-none")) {
+        tabela.classList.add("d-none");
+        mapa.classList.remove("d-none");
+    }
+    else {
+        tabela.classList.remove("d-none");
+        mapa.classList.add("d-none");
+    }
+}
