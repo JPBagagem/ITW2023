@@ -50,7 +50,6 @@ var vm = function () {
         console.log("bruh");
         var gostos = self.SetFavourites();
         for (let i = 0; i < gostos.length; i++) {
-            console.log(gostos[i].Id);
             $('#fav'+ gostos[i].Id).addClass('fa-heart');
             $('#fav'+ gostos[i].Id).removeClass('fa-heart-o');
         }
@@ -149,23 +148,21 @@ var vm = function () {
         });
     }
 
-    self.favButton = (_data,_event) =>{
-        console.log(_event);
-        if (_data.target.classList.contains('fa-heart-o')){
-            self.SetFavourites.push(_event)
+    self.favButton = (_event,_data) =>{
+        console.log(_data);
+        if (_event.target.classList.contains('fa-heart-o')){
+            self.SetFavourites.push(_data)
             self.updateLocalStorage("playerFavorites", self.SetFavourites())
-            _data.target.classList.remove('fa-heart-o');
-            _data.target.classList.add('fa-heart');
+            _event.target.classList.remove('fa-heart-o');
+            _event.target.classList.add('fa-heart');
         }
         else{
             for (let i = 0; i < self.SetFavourites().length; i++) {
-                console.log(i)
-                if (self.SetFavourites()[i].Id== _event.Id){
-                    console.log(i)
+                if (self.SetFavourites()[i].Id== _data.Id){
                     self.SetFavourites.splice(i,1)
                     self.updateLocalStorage("playerFavorites", self.SetFavourites())
-                    _data.target.classList.remove('fa-heart');
-                    _data.target.classList.add('fa-heart-o');
+                    _event.target.classList.remove('fa-heart');
+                    _event.target.classList.add('fa-heart-o');
                 }
             }
         }

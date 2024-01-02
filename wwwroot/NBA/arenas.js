@@ -8,6 +8,37 @@ var vm = function () {
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
+    self.updateLocalStorage = (key, data) => {
+        localStorage.setItem(key, JSON.stringify(data))
+    };
+    self.SetFavourites = ko.observableArray(JSON.parse(localStorage.getItem("arenaFavorites")));
+    self.favButton = (_event,_data) =>{
+        console.log(_data);
+        if (_event.target.classList.contains('fa-heart-o')){
+            self.SetFavourites.push(_data)
+            self.updateLocalStorage("arenaFavorites", self.SetFavourites())
+            _event.target.classList.remove('fa-heart-o');
+            _event.target.classList.add('fa-heart');
+        }
+        else{
+            for (let i = 0; i < self.SetFavourites().length; i++) {
+                if (self.SetFavourites()[i].Id== _data.Id){
+                    self.SetFavourites.splice(i,1)
+                    self.updateLocalStorage("arenaFavorites", self.SetFavourites())
+                    _event.target.classList.remove('fa-heart');
+                    _event.target.classList.add('fa-heart-o');
+                }
+            }
+        }
+        console.log(self.SetFavourites());
+    }
+    self.SetupFavourites = function(){
+        var gostos = self.SetFavourites();
+        for (let i = 0; i < gostos.length; i++) {
+            $('#fav'+ gostos[i].Id).addClass('fa-heart');
+            $('#fav'+ gostos[i].Id).removeClass('fa-heart-o');
+        }
+    }
     self.currentPage = ko.observable(1);
     self.pagesize = ko.observable(20);
     self.totalRecords = ko.observable(50);
@@ -120,7 +151,7 @@ var vm = function () {
             self.pagesize(data.PageSize)
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords);
-            //self.SetFavourites();
+            self.SetupFavourites();
         });
     };
 

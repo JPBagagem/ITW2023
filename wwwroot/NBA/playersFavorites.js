@@ -8,24 +8,14 @@ var vm = function () {
         localStorage.setItem(key, JSON.stringify(data))
     }
     self.SetFavourites = ko.observableArray(JSON.parse(localStorage.getItem("playerFavorites")));
-    self.favButton = (_data,_event) =>{
-        console.log(_event);
-        if (_data.target.classList.contains('fa-heart-o')){
-            self.SetFavourites.push(_event)
-            self.updateLocalStorage("playerFavorites", self.SetFavourites())
-            _data.target.classList.remove('fa-heart-o');
-            _data.target.classList.add('fa-heart');
-        }
-        else{
-            for (let i = 0; i < self.SetFavourites().length; i++) {
-                console.log(i)
-                if (self.SetFavourites()[i].Id== _event.Id){
-                    console.log(i)
-                    self.SetFavourites.splice(i,1)
-                    self.updateLocalStorage("playerFavorites", self.SetFavourites())
-                    _data.target.classList.remove('fa-heart');
-                    _data.target.classList.add('fa-heart-o');
-                }
+    self.favButton = (_event,_data) =>{
+        console.log(_data);
+        for (let i = 0; i < self.SetFavourites().length; i++) {
+            if (self.SetFavourites()[i].Id== _data.Id){
+                self.SetFavourites.splice(i,1)
+                self.updateLocalStorage("playerFavorites", self.SetFavourites())
+                _event.target.classList.remove('fa-heart');
+                _event.target.classList.add('fa-heart-o');
             }
         }
         console.log(self.SetFavourites());
