@@ -17,16 +17,20 @@ var vm = function () {
         if (_event.target.classList.contains('fa-heart-o')){
             self.SetFavourites.push(_data)
             self.updateLocalStorage("teamFavorites", self.SetFavourites())
-            _event.target.classList.remove('fa-heart-o');
-            _event.target.classList.add('fa-heart');
+            $("#fav" + _data.Id + _data.Acronym).removeClass('fa-heart-o');
+            $("#fav" + _data.Id + _data.Acronym).addClass('fa-heart');
+            $("#favimg" + _data.Id + _data.Acronym).removeClass('fa-heart-o');
+            $("#favimg" + _data.Id + _data.Acronym).addClass('fa-heart');
         }
         else{
             for (let i = 0; i < self.SetFavourites().length; i++) {
                 if (self.SetFavourites()[i].Id== _data.Id){
                     self.SetFavourites.splice(i,1)
                     self.updateLocalStorage("teamFavorites", self.SetFavourites())
-                    _event.target.classList.remove('fa-heart');
-                    _event.target.classList.add('fa-heart-o');
+                    $("#fav" + _data.Id + _data.Acronym).addClass('fa-heart-o');
+                    $("#fav" + _data.Id + _data.Acronym).removeClass('fa-heart');
+                    $("#favimg" + _data.Id + _data.Acronym).addClass('fa-heart-o');
+                    $("#favimg" + _data.Id + _data.Acronym).removeClass('fa-heart');
                 }
             }
         }
@@ -37,6 +41,8 @@ var vm = function () {
         for (let i = 0; i < gostos.length; i++) {
             $('#fav'+ gostos[i].Id + gostos[i].Acronym).addClass('fa-heart');
             $('#fav'+ gostos[i].Id + gostos[i].Acronym).removeClass('fa-heart-o');
+            $('#favimg'+ gostos[i].Id + gostos[i].Acronym).addClass('fa-heart');
+            $('#favimg'+ gostos[i].Id + gostos[i].Acronym).removeClass('fa-heart-o');
         }
     }
     self.currentPage = ko.observable(1);
@@ -203,6 +209,7 @@ var vm = function () {
 
     //--- start ....
     showLoading();
+    if (JSON.parse(localStorage.getItem("tabela?"))== "yes") tabelas()
     var pg = getUrlParameter('page');
     console.log(pg);
     if (pg == undefined)
@@ -221,3 +228,23 @@ $(document).ready(function () {
 $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');
 })
+
+function tabelas(){
+    let tinicial=document.getElementById("inicial");
+    let tfotos=document.getElementById("foto");
+    let button=document.getElementById("btn-table");
+    if (tinicial.classList.contains("d-none")) {
+        tfotos.classList.add("d-none");
+        tinicial.classList.remove("d-none");
+        button.classList.add("fa-picture-o");
+        button.classList.remove("fa-table");
+        localStorage.setItem("tabela?", JSON.stringify('yes'))
+    }
+    else {
+        tfotos.classList.remove("d-none");
+        tinicial.classList.add("d-none");
+        button.classList.remove("fa-picture-o");
+        button.classList.add("fa-table");
+        localStorage.setItem("tabela?", JSON.stringify('no'))
+    }
+}

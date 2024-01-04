@@ -52,6 +52,8 @@ var vm = function () {
         for (let i = 0; i < gostos.length; i++) {
             $('#fav'+ gostos[i].Id).addClass('fa-heart');
             $('#fav'+ gostos[i].Id).removeClass('fa-heart-o');
+            $('#favimg'+ gostos[i].Id).addClass('fa-heart');
+            $('#favimg'+ gostos[i].Id).removeClass('fa-heart-o');
         }
     }
     self.search = function() { 
@@ -153,16 +155,20 @@ var vm = function () {
         if (_event.target.classList.contains('fa-heart-o')){
             self.SetFavourites.push(_data)
             self.updateLocalStorage("playerFavorites", self.SetFavourites())
-            _event.target.classList.remove('fa-heart-o');
-            _event.target.classList.add('fa-heart');
+            $("#fav" + _data.Id).removeClass('fa-heart-o');
+            $("#fav" + _data.Id).addClass('fa-heart');
+            $("#favimg" + _data.Id).removeClass('fa-heart-o');
+            $("#favimg" + _data.Id).addClass('fa-heart');
         }
         else{
             for (let i = 0; i < self.SetFavourites().length; i++) {
                 if (self.SetFavourites()[i].Id== _data.Id){
                     self.SetFavourites.splice(i,1)
                     self.updateLocalStorage("playerFavorites", self.SetFavourites())
-                    _event.target.classList.remove('fa-heart');
-                    _event.target.classList.add('fa-heart-o');
+                    $("#fav" + _data.Id).addClass('fa-heart-o');
+                    $("#fav" + _data.Id).removeClass('fa-heart');
+                    $("#favimg" + _data.Id).addClass('fa-heart-o');
+                    $("#favimg" + _data.Id).removeClass('fa-heart');
                 }
             }
         }
@@ -232,13 +238,13 @@ function tabelas(){
         tinicial.classList.remove("d-none");
         button.classList.add("fa-picture-o");
         button.classList.remove("fa-table");
-        localStorage.setItem("tabela?", JSON.stringify('no'))
+        localStorage.setItem("tabela?", JSON.stringify('yes'))
     }
     else {
         tfotos.classList.remove("d-none");
         tinicial.classList.add("d-none");
         button.classList.remove("fa-picture-o");
         button.classList.add("fa-table");
-        localStorage.setItem("tabela?", JSON.stringify('yes'))
+        localStorage.setItem("tabela?", JSON.stringify('no'))
     }
 }

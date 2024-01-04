@@ -14,8 +14,6 @@ var vm = function () {
             if (self.SetFavourites()[i].Id== _data.Id){
                 self.SetFavourites.splice(i,1)
                 self.updateLocalStorage("playerFavorites", self.SetFavourites())
-                _event.target.classList.remove('fa-heart');
-                _event.target.classList.add('fa-heart-o');
             }
         }
         console.log(self.SetFavourites());
@@ -40,6 +38,7 @@ var vm = function () {
 
     //--- start ....
     showLoading();
+    if (JSON.parse(localStorage.getItem("tabela?"))== "yes") tabelas()
     console.log("VM initialized!");
     hideLoading();
 };
@@ -58,11 +57,13 @@ function tabelas(){
         tinicial.classList.remove("d-none");
         button.classList.add("fa-picture-o");
         button.classList.remove("fa-table");
+        localStorage.setItem("tabela?", JSON.stringify('yes'))
     }
     else {
         tfotos.classList.remove("d-none");
         tinicial.classList.add("d-none");
         button.classList.remove("fa-picture-o");
         button.classList.add("fa-table");
+        localStorage.setItem("tabela?", JSON.stringify('no'))
     }
 }
