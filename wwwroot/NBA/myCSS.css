@@ -123,6 +123,14 @@ ul{
     background-size: cover;
 }
 
+.black-text{
+    color: black;
+}
+
+.white-text{
+    color: white;
+}
+
 .dropdown-menu.bluenav .dropdown-item:hover {
     background-color: black;
     color: white;
