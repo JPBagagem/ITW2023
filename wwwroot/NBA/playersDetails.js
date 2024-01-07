@@ -19,6 +19,12 @@ var vm = function () {
     self.PositionId = ko.observable('');
     self.PositionName = ko.observable('');
     self.Photo = ko.observable('');
+    self.Seasontype = ko.observable('Playoff');
+    self.Season = ko.observable('');
+    self.Team = ko.observable('');
+    self.Logo = ko.observable('');
+    self.Rank = ko.observable('');
+    self.GamesPlayed = ko.observable('');
     self.Teams = ko.observable([]);
     self.Seasons = ko.observable([]);
     self.updateLocalStorage = (key, data) => {
@@ -55,6 +61,40 @@ var vm = function () {
         });
     };
 
+    self.detailsButton = (_event,_data) =>{
+        showLoading();
+        console.log(_data);
+        
+        ajaxHelper("http://192.168.160.58/NBA/API/Players/Statistics?id="+ self.Id()+"&seasonId=" + _data.Id, 'GET').done(function (data) {
+            console.log(data)
+            if (self.Seasontype()==='Playoff'){
+                stats = data.Playoff
+                console.log(stats); 
+            }
+            self.Season(_data.Season);
+            self.Rank(stats.Rank);
+            self.GamesPlayed(stats.GamesPlayed);
+            if (data.TeamId != null && data.Acronym != null){
+                ajaxHelper("http://192.168.160.58/NBA/API/Teams?id="+ data.TeamId + "&Acronym=" + data.Acronym, 'GET').done(function (data) {
+                    self.Team(data.Name);
+                    if (data.Logo==null){
+                        self.Logo("https://images.gamebanana.com/img/ss/tuts/100-90_619fe17d4ff4c.jpg");
+                    }
+                    else{self.Logo(data.Logo)}
+                });
+            }
+            hideLoading();
+            $('#statisticsModal').modal('show', {
+                backdrop: 'static',
+                keyboard: false
+            });
+        });
+    }
+
+    function sleep(milliseconds) {
+        const start = Date.now();
+        while (Date.now() - start < milliseconds);
+    }
     //--- Internal functions
     function ajaxHelper(uri, method, data) {
         self.error(''); // Clear error message
