@@ -75,33 +75,6 @@ var vm = function () {
         };
     };
 
-    $("#searchbar").autocomplete({
-        minLength: 3,
-        autoFill: true,
-        source: function (request, response) {
-            $.ajax({
-                type: 'GET',
-                url: 'http://192.168.160.58/NBA/API/Seasons/Search?q='+ $("#searchbar").val(),
-                success: function (data) {
-                    response($.map(data, function (item) {
-                        return item.Name;
-                    }));
-                },
-                error: function(result) {
-                    alert(result.statusText);
-                },
-            });
-        },
-        select: function (e, ui) {
-            $.ajax({
-                type: 'GET',
-                url: 'http://192.168.160.58/NBA/API/Seasons/Search?q=' + ui.item.label,
-                success: function (data) {
-                    window.location = 'seasonsDetails.html?id=' + data[0].Id;
-                }
-            })
-        },
-    });
 
     //--- Page Events
     self.activate = function (id) {
