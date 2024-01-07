@@ -1,80 +1,62 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form');
+$(document).ready(function () {
+    $('form').submit(function (event) {
+        // Resetar as mensagens de erro
+        $('.error').remove();
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        // Função para verificar se uma string contém apenas números
-        function isNumeric(value) {
-            return /^\d+$/.test(value);
-        }
-
-        // Validar os campos
-        const nome = document.querySelector('input[placeholder="Escreva o seu nome"]');
-        const sobrenome = document.querySelector('input[placeholder="Escreva o seu username"]');
-        const email = document.querySelector('input[placeholder="Coloque o seu email"]');
-        const numeroTelemovel = document.querySelector('input[placeholder="Coloque o seu número"]');
-        const password = document.querySelector('input[placeholder="Coloque a password"]');
-        const confirmarPassword = document.querySelector('input[placeholder="Confirme a sua password"]');
-        
-        // Validar se os campos estão preenchidos
-        if (
-            nome.value.trim() === '' ||
-            sobrenome.value.trim() === '' ||
-            email.value.trim() === '' ||
-            numeroTelemovel.value.trim() === '' ||
-            password.value.trim() === '' ||
-            confirmarPassword.value.trim() === ''
-        ) {
-            alert('Por favor, preencha todos os campos.');
+        // Validar o email
+        var email = $('input[type="text"][placeholder="Escreva o seu email"]').val();
+        if (email.length < 3 || email.indexOf('@') === -1) {
+            event.preventDefault();
+            alert('Email deve conter @');
             return;
         }
 
-        // Validar se o nome e o sobrenome têm mais de três letras (ignorando espaços)
-        if (nome.value.trim().replace(/\s/g, '').length < 3 || sobrenome.value.trim().replace(/\s/g, '').length < 3) {
-            alert('O nome e o sobrenome devem ter mais de três letras.');
+        // Validar o nome
+        var nome = $('input[placeholder="Escreva o seu nome"]').val();
+        if (nome.length < 3) {
+            event.preventDefault();
+            alert('Nome deve ter mais de três letras');
             return;
         }
 
-        // Validar se o email contém um @
-        if (!email.value.includes('@')) {
-            alert('O email deve conter um "@".');
+        // Validar a morada
+        var morada = $('input[placeholder="Escreva a sua morada"]').val();
+        if (morada.length < 3) {
+            event.preventDefault();
+            alert('Morada deve ter mais de três letras');
             return;
         }
 
-        // Validar se o número de telemóvel contém apenas números
-        if (!isNumeric(numeroTelemovel.value)) {
-            alert('O número de telemóvel só pode conter números.');
+        // Validar o número do cartão de crédito, ano de validade e código postal
+        var numeroCartao = $('input[placeholder="Coloque o seu número"]').val();
+        var anoValidade = $('input[placeholder="Ano de validade do cartão"]').val();
+        var codigoPostal = $('input[placeholder="Escreva o seu código postal"]').val();
+
+        if (!/^\d+$/.test(numeroCartao)) {
+            event.preventDefault();
+            alert('Número do cartão de crédito deve conter apenas números');
             return;
         }
 
-        // Validar se as senhas coincidem
-        if (password.value !== confirmarPassword.value) {
-            alert('As senhas não coincidem. Por favor, tente novamente.');
+        if (!/^\d+$/.test(anoValidade)) {
+            event.preventDefault();
+            alert('Ano de validade deve conter apenas números');
             return;
         }
 
-        // Validar se um método de pagamento foi selecionado
-        const metodosPagamento = document.querySelectorAll('input[name="gender"]');
-        let metodoSelecionado = false;
-
-        for (const metodo of metodosPagamento) {
-            if (metodo.checked) {
-                metodoSelecionado = true;
-                break;
-            }
-        }
-
-        if (!metodoSelecionado) {
-            alert('Por favor, selecione um método de pagamento.');
+        if (!/^\d+$/.test(codigoPostal)) {
+            event.preventDefault();
+            alert('Código Postal deve conter apenas números');
             return;
         }
 
-        // Se todas as validações passarem, você pode enviar o formulário
-        alert('Formulário enviado com sucesso!');
-        
-        // Adicione aqui o redirecionamento
+        // Exibir mensagem de sucesso apenas se todos os campos estiverem corretos
+        alert('Formulário aceite');
+
         window.location.href = 'index.html';
+
+        // Impedir o envio padrão do formulário
+        event.preventDefault();
     });
 });
 

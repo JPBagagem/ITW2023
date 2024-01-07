@@ -5,6 +5,7 @@
     <title> Checkout </title>
     <link rel="stylesheet" href="myCSS.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -19,13 +20,14 @@
             justify-content: center;
             align-items: center;
             padding: 10px;
-            background: linear-gradient(135deg, #e53935, #1565c0);
+            background: url('https://cdn.akamai.steamstatic.com/steam/apps/2338770/extras/NBA24-BASE-METADATA-STEAM_Main_Capsule_616x353.jpg?t=1701446958'); /* Tons de amarelo e laranja + Imagem de fundo */
+            background-size: cover;
         }
 
         .container {
             max-width: 700px;
             width: 100%;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 25px 30px;
             border-radius: 5px;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
@@ -35,6 +37,7 @@
             font-size: 25px;
             font-weight: 500;
             position: relative;
+            color: #FF8A65; /* Laranja mais escuro */
         }
 
         .container .title::before {
@@ -45,7 +48,7 @@
             height: 3px;
             width: 30px;
             border-radius: 5px;
-            background: linear-gradient(135deg, #e53935, #1565c0);
+            background: linear-gradient(135deg, #FFD54F, #FF8A65); /* Tons de amarelo e laranja */
         }
 
         .content form .user-details {
@@ -58,12 +61,16 @@
         form .user-details .input-box {
             margin-bottom: 15px;
             width: calc(100% / 2 - 20px);
+            background: rgba(255, 255, 255, 0.9); /* Fundo branco transparente */
+            padding: 10px;
+            border-radius: 5px;
         }
 
         form .input-box span.details {
             display: block;
             font-weight: 500;
             margin-bottom: 5px;
+            color: #FFD54F; /* Amarelo */
         }
 
         .user-details .input-box input {
@@ -73,53 +80,14 @@
             font-size: 16px;
             border-radius: 5px;
             padding-left: 15px;
-            border: 1px solid #e53935;
+            border: 1px solid #FF8A65; /* Laranja mais escuro */
             border-bottom-width: 2px;
             transition: all 0.3s ease;
         }
 
         .user-details .input-box input:focus,
         .user-details .input-box input:valid {
-            border-color: #1565c0;
-        }
-
-        form .gender-details .gender-title {
-            font-size: 20px;
-            font-weight: 500;
-        }
-
-        form .category {
-            display: flex;
-            width: 80%;
-            margin: 14px 0;
-            justify-content: space-between;
-        }
-
-        form .category label {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        form .category label .dot {
-            height: 18px;
-            width: 18px;
-            border-radius: 50%;
-            margin-right: 10px;
-            background: #d9d9d9;
-            border: 5px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        #dot-1:checked ~ .category label .one,
-        #dot-2:checked ~ .category label .two,
-        #dot-3:checked ~ .category label .three {
-            background: #1565c0;
-            border-color: #d9d9d9;
-        }
-
-        form input[type="radio"] {
-            display: none;
+            border-color: #FFD54F; /* Amarelo */
         }
 
         form .button {
@@ -138,11 +106,11 @@
             letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
-            background: linear-gradient(135deg, #e53935, #1565c0);
+            background: linear-gradient(135deg, #FFD54F, #FF8A65); /* Tons de amarelo e laranja */
         }
 
         form .button input:hover {
-            background: linear-gradient(-135deg, #e53935, #1565c0);
+            background: linear-gradient(-135deg, #FFD54F, #FF8A65); /* Tons de amarelo e laranja invertidos */
         }
 
         @media (max-width: 584px) {
@@ -154,106 +122,50 @@
                 margin-bottom: 15px;
                 width: 100%;
             }
-
-            form .category {
-                width: 100%;
-            }
-
-            .content form .user-details {
-                max-height: 300px;
-                overflow-y: scroll;
-            }
-
-            .user-details::-webkit-scrollbar {
-                width: 5px;
-            }
-        }
-
-        @media (max-width: 459px) {
-            .container .content .category {
-                flex-direction: column;
-            }
-        }
-
-        #mbwayNumber {
-            display: none;
-        }
-
-        .payment-input {
-            display: none;
-        }
-
-        .payment-input {
-            display: none;
-        }
-
-        /* Adicione um estilo para o campo de preço */
-        .price-input {
-            width: 100%;
-            height: 45px;
-            outline: none;
-            font-size: 16px;
-            border-radius: 5px;
-            padding-left: 15px;
-            margin-bottom: 15px;
-            border: 1px solid #e53935;
-            border-bottom-width: 2px;
-            transition: all 0.3s ease;
-            float: right;
         }
 
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="title">Dados</div>
+        <div class="title">Morada e Pagamento</div>
         <div class="content">
             <form action="#">
                 <div class="user-details">
                     <div type="text" class="price-input" id="price" placeholder="Preço"></div>
                     <div class="input-box">
-                        <span class="details">Nome</span>
+                        <span class="details">Email</span>
+                        <input type="text" placeholder="Escreva o seu email">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Cartões aceites</span>
+                        <div class="card-images">
+                            <img src="card1.png" width="100" alt="Card 1">
+                            <img src="card2.png" width="50" alt="Card 2">
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Nome Completo</span>
                         <input type="text" placeholder="Escreva o seu nome">
                     </div>
                     <div class="input-box">
-                        <span class="details">Sobrenome</span>
-                        <input type="text" placeholder="Escreva o seu username">
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Email</span>
-                        <input type="text" placeholder="Coloque o seu email">
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Número de telemóvel</span>
+                        <span class="details">Número do cartão de crédito</span>
                         <input type="text" placeholder="Coloque o seu número">
                     </div>
                     <div class="input-box">
-                        <span class="details">Password</span>
-                        <input type="text" placeholder="Coloque a password">
+                        <span class="details">Morada</span>
+                        <input type="text" placeholder="Escreva a sua morada">
                     </div>
                     <div class="input-box">
-                        <span class="details">Confirmar Password</span>
-                        <input type="text" placeholder="Confirme a sua password">
+                        <span class="details">Ano de Validade</span>
+                        <input type="text" placeholder="Ano de validade do cartão">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Código Postal</span>
+                        <input type="text" placeholder="Escreva o seu código postal">
                     </div>
                 </div>
-                <div class="gender-details">
-                    <input type="radio" name="gender" id="dot-1">
-                    <input type="radio" name="gender" id="dot-2">                   
-                    <span class="gender-title">Método de Pagamento</span>
-                    <div class="category">
-                        <label for="dot-1">
-                            <span class="dot one"></span>
-                            <span class="gender">Cartão</span>
-                        </label>
-                        <input type="text" class="payment-input" id="cardNumber" placeholder="Número do Cartão">
-                        <label for="dot-2">
-                            <span class="dot two"></span>
-                            <span class="gender">MBway</span>
-                        </label>
-                        <input type="text" id="mbwayNumber" style="display: none;" placeholder="Número MBway">
-                    </div>
-                </div>
-                <a class="button" href="index.html">
+                <a class="button" href="pagamento.html">
                     <input type="submit" value="Confirmar">
                 </a>
 
