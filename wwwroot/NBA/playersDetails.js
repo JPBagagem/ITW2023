@@ -24,6 +24,8 @@ var vm = function () {
     self.Team = ko.observable('');
     self.Logo = ko.observable('');
     self.Rank = ko.observable('');
+    self.TeamId = ko.observable('');
+    self.Acronym = ko.observable('');
     self.GamesPlayed = ko.observable('');
     self.Teams = ko.observable([]);
     self.Seasons = ko.observable([]);
@@ -72,6 +74,9 @@ var vm = function () {
                 console.log(stats); 
             }
             self.Season(_data.Season);
+            self.TeamId(String(data.TeamId));
+            console.log(data.TeamId)
+            self.Acronym(data.Acronym);
             self.Rank(stats.Rank);
             self.GamesPlayed(stats.GamesPlayed);
             if (data.TeamId != null && data.Acronym != null){

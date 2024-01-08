@@ -157,16 +157,16 @@
                         <div class="row border-bottom g-2"><h5>Playoff</h5></div>
                         <div class="row border-bottom g-2" style="margin: 10px">
                             <img class="img-thumbnail profile mx-auto" data-bind="attr:{src: Photo}" style="margin: 10px">
-                            <img class="img-thumbnail col-12 col-lg-4  mx-auto" data-bind="attr:{src: Logo, title: Team, alt: Team}" style="margin: 10px; height: 320px">
+                            <a class="col-12 col-lg-4  mx-auto" data-bind="attr: { href:'./teamsDetails.html?id=' + TeamId() + '&acronimo=' + Acronym() }"><img class="img-thumbnail col-12" data-bind="attr:{src: Logo, title: Team, alt: Team}" style="margin: 10px; height: 320px"></a>
                         </div>
-                        <div class="row border-bottom g-2" data-bind=" visible: Rank!= null">
+                        <div class="row border-bottom g-2" data-bind=" visible: Rank() != null && Rank()!= ''">
                             <div class="col-2">Rank</div><div class="col-10" data-bind="text: Rank"></div>
                         </div>
                         <div class="row border-bottom g-2">
                             <div class="col-2">Games Played</div><div class="col-10" data-bind="text: GamesPlayed"></div>
                         </div>
                         <div class="row border-bottom g-2" data-bind="visible: CountryName() != '' && CountryName() != null">
-                            <div class="col-2">Country</div><div class="col-10"><a class="nav-link" data-bind="text:CountryName()+ ' (' + CountryId() + ')', attr: { href:'./teamDetails.html?id=' + CountryId() }" title="Show Team Details"></a></div>
+                            <div class="col-2">Country</div><div class="col-10"><a class="nav-link" data-bind="text:TeamId() + ' (' + Acronym() + ')', attr: { href:'./teamDetails.html?id=' + CountryId() }" title="Show Team Details"></a></div>
                         </div>
                         <div class="row border-bottom g-2" data-bind="visible: Birthdate() != '' && Birthdate() != null">
                             <div class="col-2">Birthdate</div>
