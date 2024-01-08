@@ -1,11 +1,13 @@
 ﻿// Load the Visualization API and the piechart package.
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
+var positions = [['Position', 'NumberofPlayers']]
 
 var composedUri = "http://192.168.160.58/nba/api/Positions";
 // Set chart options
 var options = {
-    title: 'Número de Jogadores por posições'
+    title: 'Número de Jogadores por posições',
+    is3D: true,
 };
 
 // Callback that creates and populates a data table,
@@ -13,35 +15,35 @@ var options = {
 // draws it.
 function drawChart() {
     // Create our data table.
-    ajaxHelper(composedUri, 'GET').done(function (stats) {
-        // Interact with the data returned
-        var positions = []
-        positions.push(['Position', 'NumberofPlayers'])
-        console.log(typeof positions)
-        console.log(stats)
-        for (i=0; i < stats.Records.length; i++) {
-            let item = stats.Records[i]
-            console.log(item)
-            p = ajaxHelper(composedUri + "/" + item.Id, 'GET').done(function (position) {
-                    console.log(position)
-                    let p=positions[0]
+    if (JSON.parse(localStorage.getItem("positionsdata"))==null){
+        ajaxHelper(composedUri, 'GET').done(function (stats) {
+            // Interact with the data returned
+            let positions = [['Position', 'NumberofPlayers']]
+            console.log(positions)
+            console.log(stats)
+            for (i=0; i < stats.Records.length; i++) {
+                let item = stats.Records[i]
+                console.log(item)
+                ajaxHelper(composedUri + "/" + item.Id, 'GET').done(function (position) {
+                    positions.push([position.Name, position.Players.length])
                     console.log(positions)
-                    if(positions[0] == 'Position')p = positions
-                    console.log(p)
-                    p.push([String(position.Name), parseInt(position.Players.length)])
-                    return p
+                    if (positions.length==8){
+                        var data = google.visualization.arrayToDataTable(positions)
+                        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+                        chart.draw(data, options);
+                        localStorage.setItem("positionsdata", JSON.stringify(positions))
+                    }
                 })
-            sleep(200)
-        }
-        console.log(p)
-        positions = positions[0]
-        console.log(positions)
-        var data = google.visualization.arrayToDataTable(positions)
-        console.log(data)
-        // Instantiate and draw our chart, passing in some options.
+                sleep(250)
+            }
+        });
+    }
+    else{
+        var data = google.visualization.arrayToDataTable(JSON.parse(localStorage.getItem("positionsdata")))
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
-    });
+    }
+    hideLoading()
 }
 
 //--- Internal functions
@@ -63,4 +65,20 @@ function sleep(miliseconds) {
  
     while (currentTime + miliseconds >= new Date().getTime()) {
     }
- }
+}
+
+function showLoading() {
+    $('#myModal').modal('show', {
+        backdrop: 'static',
+        keyboard: false
+    });
+}
+function hideLoading() {
+    $('#myModal').on('shown.bs.modal', function (e) {
+        $("#myModal").modal('hide');
+    })
+}
+
+$(document).ready(function () {
+    showLoading()
+});

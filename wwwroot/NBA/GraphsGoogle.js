@@ -11,14 +11,9 @@ var options = {
     },
     bars: 'horizontal', // Required for Material Bar Charts.
     legend: { position: 'none' },
-    height: 3000,
+    height: 2500,
     hAxis: { textStyle: { fontSize: 11, fontName: 'Open Sans' } },
     vAxis: { textStyle: { fontSize: 11, fontName: 'Open Sans' } },
-    animation:{
-        duration: 1000,
-        easing: 'out',
-        startup: true
-    },
     series: {
         0: {
             color: 'rgb(203, 15, 40)'
@@ -54,9 +49,11 @@ function drawChart() {
         var chart = new google.charts.Bar(document.getElementById('chart_div'));
         chart.draw(data, options);
         setTimeout(() => {
+            hideLoading();
             document.getElementById('chart_div').classList.remove('animated-chart-start')
         }, 100)
     });
+    hideLoading();
 }
 
 //--- Internal functions
@@ -72,3 +69,19 @@ function ajaxHelper(uri, method, data) {
         }
     });
 }
+
+function showLoading() {
+    $('#myModal').modal('show', {
+        backdrop: 'static',
+        keyboard: false
+    });
+}
+function hideLoading() {
+    $('#myModal').on('shown.bs.modal', function (e) {
+        $("#myModal").modal('hide');
+    })
+}
+
+$(document).ready(function () {
+    showLoading()
+});
