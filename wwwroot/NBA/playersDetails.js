@@ -21,7 +21,8 @@ var vm = function () {
     self.PositionId = ko.observable('');
     self.PositionName = ko.observable('');
     self.Photo = ko.observable('');
-    self.Seasontype = ko.observableArray(JSON.parse(localStorage.getItem("seasonType")));
+    console.log(JSON.parse(localStorage.getItem("seasonType")))
+    self.Seasontype = ko.observableArray("");
     self.Season = ko.observable('');
     self.Team = ko.observable('');
     self.Logo = ko.observable('');
@@ -60,6 +61,7 @@ var vm = function () {
     self.activate = function (id) {
         console.log('CALL: getArena...');
         var composedUri = self.baseUri() + id;
+        self.Seasontype(JSON.parse(localStorage.getItem("seasonType")));
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
             hideLoading();
@@ -112,18 +114,18 @@ var vm = function () {
             self.FGMade(stats.FGMade);
             self.FGAttempts(stats.FGAttempts);
             if (stats.FGPercentage != null && String(stats.FGPercentage).includes(',')){
-                self.FGPercentage((parseFloat(stats.FGPercentage.replace(',', '.')) * 100).toFixed(2));}
-            else if (stats.FGPercentage != null){self.FGPercentage((parseFloat(stats.FGPercentage) * 100).toFixed(2));}
+                self.FGPercentage((parseFloat(stats.FGPercentage.replace(',', '.')) * 100).toFixed(1));}
+            else if (stats.FGPercentage != null){self.FGPercentage((parseFloat(stats.FGPercentage) * 100).toFixed(1));}
             self.ThreePtFGMade(stats.ThreePtFGMade);
             self.ThreePtFGAttempts(stats.ThreePtFGAttempts);
             if (stats.ThreePtFGPercentage != null && String(stats.ThreePtFGPercentage.includes(','))){
-                self.ThreePtFGPercentage((parseFloat(stats.ThreePtFGPercentage.replace(',', '.')) * 100).toFixed(2));}
-            else if (stats.ThreePtFGPercentage != null){self.ThreePtFGPercentage((parseFloat(stats.ThreePtFGPercentage) * 100).toFixed(2));}
+                self.ThreePtFGPercentage((parseFloat(stats.ThreePtFGPercentage.replace(',', '.')) * 100).toFixed(1));}
+            else if (stats.ThreePtFGPercentage != null){self.ThreePtFGPercentage((parseFloat(stats.ThreePtFGPercentage) * 100).toFixed(1));}
             self.FTMade(stats.FTMade);
             self.FTAttempts(stats.FTAttempts);
             if (stats.FTPercentage != null && String(stats.FTPercentage).includes(',')){
-                self.FTPercentage((parseFloat(stats.FTPercentage.replace(',', '.')) * 100).toFixed(2));}
-            else if (stats.FTPercentage != null){self.FTPercentage((parseFloat(stats.FTPercentage) * 100).toFixed(2));}
+                self.FTPercentage((parseFloat(stats.FTPercentage.replace(',', '.')) * 100).toFixed(1));}
+            else if (stats.FTPercentage != null){self.FTPercentage((parseFloat(stats.FTPercentage) * 100).toFixed(1));}
             self.OffensiveRebounds(stats.OffensiveRebounds);
             self.DefensiveRebounds(stats.DefensiveRebounds);
             self.Rebounds(stats.Rebounds);
@@ -156,6 +158,7 @@ var vm = function () {
         if (self.Seasontype()== "Playoffs") self.Seasontype("Regular Season")
         else self.Seasontype("Playoffs")
         self.detailsButton(event, seasondata)
+        localStorage.setItem("seasonType", JSON.stringify(self.Seasontype()))
     });
     function sleep(milliseconds) {
         const start = Date.now();
