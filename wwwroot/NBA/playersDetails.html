@@ -55,40 +55,40 @@
                 <div class="py-2 border-bottom mb-3">
                     <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
                 </div>
-                <div class="row g-2 col-2" style="margin: 10px; float: left">
-                    <img class="img-thumbnail profile" data-bind="attr:{src: Photo}"><br />
+                <div class="row g-2 col-12 col-lg-4 col-xl-2" style="margin: 10px; float: left">
+                    <img class="img-thumbnail profile mx-auto" data-bind="attr:{src: Photo}"><br />
                 </div>
                 <div>
                     <div class="row border-bottom g-2">
-                        <div class="col-2">PlayerId</div><div class="col-10" data-bind="text: Id"></div>
+                        <div class="col-4 col-lg-2">PlayerId</div><div class="col-8 col-lg-10" data-bind="text: Id"></div>
                     </div>
                     <div class="row border-bottom g-2">
-                        <div class="col-2">Name</div><div class="col-10" data-bind="text: Name"></div>
+                        <div class="col-4 col-lg-2">Name</div><div class="col-8 col-lg-10" data-bind="text: Name"></div>
                     </div>
                     <div class="row border-bottom g-2" data-bind="visible: CountryName() != '' && CountryName() != null">
-                        <div class="col-2">Country</div><div class="col-10"><a class="nav-link" data-bind="text:CountryName()+ ' (' + CountryId() + ')', attr: { href:'./teamDetails.html?id=' + CountryId() }" title="Show Team Details"></a></div>
+                        <div class="col-4 col-lg-2">Country</div><div class="col-8 col-lg-10"><a class="nav-link" data-bind="text:CountryName()+ ' (' + CountryId() + ')', attr: { href:'./teamDetails.html?id=' + CountryId() }" title="Show Team Details"></a></div>
                     </div>
                     <div class="row border-bottom g-2" data-bind="visible: Birthdate() != '' && Birthdate() != null">
-                        <div class="col-2">Birthdate</div>
-                        <div class="col-10"><a class="nav-link" data-bind="text:Birthdate().substring(0,10)"></a></div>
+                        <div class="col-4 col-lg-2">Birthdate</div>
+                        <div class="col-8 col-lg-10"><a class="nav-link" data-bind="text:Birthdate().substring(0,10)"></a></div>
                     </div>
                     <div class="row border-bottom g-2" data-bind="visible: PositionName() != '' && PositionName() != null">
-                        <div class="col-2">Position</div>
-                        <div class="col-10"><a class="nav-link" data-bind="text: PositionName() + ' (' + PositionId() + ')' "></a></div>
+                        <div class="col-4 col-lg-2">Position</div>
+                        <div class="col-8 col-lg-10"><a class="nav-link" data-bind="text: PositionName() + ' (' + PositionId() + ')' "></a></div>
                     </div>
                     <div class="row border-bottom g-2" data-bind="visible: Height() != '' && Height() != null">
-                        <div class="col-2">Height</div>
-                        <div class="col-7"><a class="nav-link" id="altura" data-bind="text: Height() + ' ft' "></a></div>
-                        <div class="col-3"><button class="btn bg-primary" id="heightconverter" style="color: white; width : 100%; margin: 2px 0 2px 0">Converter para metros</button></div>
+                        <div class="col-4 col-lg-2">Height</div>
+                        <div class="col-5 col-lg-7"><a class="nav-link" id="altura" data-bind="text: Height() + ' ft' "></a></div>
+                        <div class="col-3 col-lg-3"><button class="btn bg-primary" id="heightconverter" style="color: white; width : 100%; margin: 2px 0 2px 0">Converter para metros</button></div>
                     </div>
                     <div class="row border-bottom g-2" data-bind="visible: Weight() != '' && Weight() != null">
-                        <div class="col-2">Weight</div>
-                        <div class="col-7"><a class="nav-link" id="peso" data-bind="text: Weight() + ' lb' "></a></div>
-                        <div class="col-3"><button class="btn bg-primary" id="weightconverter" style="color: white; width : 100%; margin: 2px 0 2px 0">Converter para quilos</button></div>
+                        <div class="col-4 col-lg-2">Weight</div>
+                        <div class="col-5 col-lg-7"><a class="nav-link" id="peso" data-bind="text: Weight() + ' lb' "></a></div>
+                        <div class="col-3 col-lg-3"><button class="btn bg-primary" id="weightconverter" style="color: white; width : 100%; margin: 2px 0 2px 0">Converter para quilos</button></div>
                     </div>
                     <div class="row border-bottom g-2" data-bind="visible: School() != '' && School() != null">
-                        <div class="col-2">School</div>
-                        <div class="col-10"><a class="nav-link" data-bind="text: School "></a></div>
+                        <div class="col-4 col-lg-2">School</div>
+                        <div class="col-8 col-lg-10"><a class="nav-link" data-bind="text: School "></a></div>
                     </div>
                 </div>
             </div>

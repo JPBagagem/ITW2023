@@ -58,8 +58,8 @@
                 <div class="py-2 border-bottom mb-3" data-bind="visible: Name() == '' || Name() == null">
                     <h2 data-bind="text: Acronym()"></h2>
                 </div>
-                <div class="row g-2 small col-3" style="margin: 10px; float: left">
-                    <img class="img-thumbnail logo" data-bind="attr:{src: Logo}"><br />
+                <div class="row g-2 small col-12 col-lg-4 col-xl-3" style="margin: 10px; float: left">
+                    <img class="img-thumbnail logo mx-auto" data-bind="attr:{src: Logo}"><br />
                 </div>
                 <!-- ko if:Acronym().length > 0 -->
                 <div>
