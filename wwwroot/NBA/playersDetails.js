@@ -3,6 +3,8 @@ var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
+    var event = ""
+    var seasondata = ""
     self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Players/');
     self.displayName = 'NBA Player Details';
     self.error = ko.observable('');
@@ -19,7 +21,7 @@ var vm = function () {
     self.PositionId = ko.observable('');
     self.PositionName = ko.observable('');
     self.Photo = ko.observable('');
-    self.Seasontype = ko.observable('Playoff');
+    self.Seasontype = ko.observableArray(JSON.parse(localStorage.getItem("seasonType")));
     self.Season = ko.observable('');
     self.Team = ko.observable('');
     self.Logo = ko.observable('');
@@ -27,6 +29,28 @@ var vm = function () {
     self.TeamId = ko.observable('');
     self.Acronym = ko.observable('');
     self.GamesPlayed = ko.observable('');
+    self.MinutesPlayed = ko.observable('');
+    self.FGMade = ko.observable('');
+    self.FGAttempts = ko.observable('');
+    self.FGPercentage = ko.observable('');
+    self.ThreePtFGMade = ko.observable('');
+    self.ThreePtFGAttempts = ko.observable('');
+    self.ThreePtFGPercentage = ko.observable('');
+    self.FTMade = ko.observable('');
+    self.FTAttempts = ko.observable('');
+    self.FTPercentage = ko.observable('');
+    self.OffensiveRebounds = ko.observable('');
+    self.DefensiveRebounds = ko.observable('');
+    self.Rebounds = ko.observable('');
+    self.Assists = ko.observable('');
+    self.Steals = ko.observable('');
+    self.Blocks = ko.observable('');
+    self.Turnovers = ko.observable('');
+    self.PersonalFouls = ko.observable('');
+    self.PointsScored = ko.observable('');
+    self.Efficency = ko.observable('');
+    self.AST_TOV = ko.observable('');
+    self.STL_TOV = ko.observable('');
     self.Teams = ko.observable([]);
     self.Seasons = ko.observable([]);
     self.updateLocalStorage = (key, data) => {
@@ -66,19 +90,52 @@ var vm = function () {
     self.detailsButton = (_event,_data) =>{
         showLoading();
         console.log(_data);
-        
+        event = _event
+        seasondata = _data
         ajaxHelper("http://192.168.160.58/NBA/API/Players/Statistics?id="+ self.Id()+"&seasonId=" + _data.Id, 'GET').done(function (data) {
             console.log(data)
-            if (self.Seasontype()==='Playoff'){
-                stats = data.Playoff
-                console.log(stats); 
+            if (self.Seasontype()==='Playoffs'){
+                stats = data.Playoff 
             }
+            else{
+                self.Seasontype("Regular Season")
+                stats = data.Regular
+            }
+            console.log(stats);
             self.Season(_data.Season);
             self.TeamId(String(data.TeamId));
             console.log(data.TeamId)
             self.Acronym(data.Acronym);
             self.Rank(stats.Rank);
             self.GamesPlayed(stats.GamesPlayed);
+            self.MinutesPlayed(stats.MinutesPlayed);
+            self.FGMade(stats.FGMade);
+            self.FGAttempts(stats.FGAttempts);
+            if (stats.FGPercentage != null && String(stats.FGPercentage).includes(',')){
+                self.FGPercentage((parseFloat(stats.FGPercentage.replace(',', '.')) * 100).toFixed(2));}
+            else if (stats.FGPercentage != null){self.FGPercentage((parseFloat(stats.FGPercentage) * 100).toFixed(2));}
+            self.ThreePtFGMade(stats.ThreePtFGMade);
+            self.ThreePtFGAttempts(stats.ThreePtFGAttempts);
+            if (stats.ThreePtFGPercentage != null && String(stats.ThreePtFGPercentage.includes(','))){
+                self.ThreePtFGPercentage((parseFloat(stats.ThreePtFGPercentage.replace(',', '.')) * 100).toFixed(2));}
+            else if (stats.ThreePtFGPercentage != null){self.ThreePtFGPercentage((parseFloat(stats.ThreePtFGPercentage) * 100).toFixed(2));}
+            self.FTMade(stats.FTMade);
+            self.FTAttempts(stats.FTAttempts);
+            if (stats.FTPercentage != null && String(stats.FTPercentage).includes(',')){
+                self.FTPercentage((parseFloat(stats.FTPercentage.replace(',', '.')) * 100).toFixed(2));}
+            else if (stats.FTPercentage != null){self.FTPercentage((parseFloat(stats.FTPercentage) * 100).toFixed(2));}
+            self.OffensiveRebounds(stats.OffensiveRebounds);
+            self.DefensiveRebounds(stats.DefensiveRebounds);
+            self.Rebounds(stats.Rebounds);
+            self.Assists(stats.Assists);
+            self.Steals(stats.Steals);
+            self.Blocks(stats.Blocks);
+            self.Turnovers(stats.Turnovers);
+            self.PersonalFouls(stats.PersonalFouls);
+            self.PointsScored(stats.PointsScored);
+            self.Efficency(stats.Efficency);
+            self.AST_TOV(stats.AST_TOV);
+            self.STL_TOV(stats.STL_TOV);
             if (data.TeamId != null && data.Acronym != null){
                 ajaxHelper("http://192.168.160.58/NBA/API/Teams?id="+ data.TeamId + "&Acronym=" + data.Acronym, 'GET').done(function (data) {
                     self.Team(data.Name);
@@ -95,7 +152,11 @@ var vm = function () {
             });
         });
     }
-
+    $("#Seasonchanger").click(function(){
+        if (self.Seasontype()== "Playoffs") self.Seasontype("Regular Season")
+        else self.Seasontype("Playoffs")
+        self.detailsButton(event, seasondata)
+    });
     function sleep(milliseconds) {
         const start = Date.now();
         while (Date.now() - start < milliseconds);

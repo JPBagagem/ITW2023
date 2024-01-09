@@ -154,39 +154,82 @@
                 </div>
                 <div class="modal-body text-center">
                     <div class="container">
-                        <div class="row border-bottom g-2"><h5>Playoff</h5></div>
+                        <div class="row border-bottom g-2"><h5 class="col-12 col-lg-3 col-xl-2" data-bind="text: Seasontype"></h5><div class="d-none d-lg-block col-lg-5 col-xl-7"></div><button class="btn col-12 col-lg-4 col-xl-3 bg-primary" style="margin-bottom: 10px; color: white" id="Seasonchanger" data-bind="text: 'Mudar para ' + Seasontype()"></button></div>
                         <div class="row border-bottom g-2" style="margin: 10px">
                             <img class="img-thumbnail profile mx-auto" data-bind="attr:{src: Photo}" style="margin: 10px">
                             <a class="col-12 col-lg-4  mx-auto" data-bind="attr: { href:'./teamsDetails.html?id=' + TeamId() + '&acronimo=' + Acronym() }"><img class="img-thumbnail col-12" data-bind="attr:{src: Logo, title: Team, alt: Team}" style="margin: 10px; height: 320px"></a>
                         </div>
-                        <div class="row border-bottom g-2" data-bind=" visible: Rank() != null && Rank()!= ''">
-                            <div class="col-2">Rank</div><div class="col-10" data-bind="text: Rank"></div>
+                        <div class="row border-bottom g-2" data-bind="visible: Rank() != null && Rank()!= ''">
+                            <div class="col-4">Rank</div><div class="col-8" data-bind="text: Rank"></div>
                         </div>
-                        <div class="row border-bottom g-2">
-                            <div class="col-2">Games Played</div><div class="col-10" data-bind="text: GamesPlayed"></div>
+                        <div class="row border-bottom g-2" data-bind="visible: GamesPlayed() != null && GamesPlayed()!= ''">
+                            <div class="col-4">Games Played</div><div class="col-8" data-bind="text: GamesPlayed"></div>
                         </div>
-                        <div class="row border-bottom g-2" data-bind="visible: CountryName() != '' && CountryName() != null">
-                            <div class="col-2">Country</div><div class="col-10"><a class="nav-link" data-bind="text:TeamId() + ' (' + Acronym() + ')', attr: { href:'./teamDetails.html?id=' + CountryId() }" title="Show Team Details"></a></div>
+                        <div class="row border-bottom g-2" data-bind="visible: MinutesPlayed() != null && MinutesPlayed()!= ''">
+                            <div class="col-4">Minutes Played</div><div class="col-8" data-bind="text: MinutesPlayed"></div>
                         </div>
-                        <div class="row border-bottom g-2" data-bind="visible: Birthdate() != '' && Birthdate() != null">
-                            <div class="col-2">Birthdate</div>
-                            <div class="col-10"><a class="nav-link" data-bind="text:Birthdate().substring(0,10)"></a></div>
+                        <div class="row border-bottom g-2" data-bind="visible: FGMade() != '' && FGMade() != null">
+                            <div class="col-4">FG Made</div><div class="col-8" data-bind="text: FGMade"></div>
                         </div>
-                        <div class="row border-bottom g-2" data-bind="visible: PositionName() != '' && PositionName() != null">
-                            <div class="col-2">Position</div>
-                            <div class="col-10"><a class="nav-link" data-bind="text: PositionName() + ' (' + PositionId() + ')' "></a></div>
+                        <div class="row border-bottom g-2" data-bind="visible: FGAttempts() != '' && FGAttempts() != null">
+                            <div class="col-4">FG Attempts</div><div class="col-8" data-bind="text: FGAttempts"></div>
                         </div>
-                        <div class="row border-bottom g-2" data-bind="visible: Height() != '' && Height() != null">
-                            <div class="col-2">Height</div>
-                            <div class="col-10"><a class="nav-link" data-bind="text: Height() + ' ft' "></a></div>
+                        <div class="row border-bottom g-2" data-bind="visible: FGPercentage() != '' && FGPercentage() != null">
+                            <div class="col-4">FG Percentage</div><div class="col-8" data-bind="text: FGPercentage() + '%'"></div>
                         </div>
-                        <div class="row border-bottom g-2" data-bind="visible: Weight() != '' && Weight() != null">
-                            <div class="col-2">Weight</div>
-                            <div class="col-10"><a class="nav-link" data-bind="text: Weight() + ' lb' "></a></div>
+                        <div class="row border-bottom g-2" data-bind="visible: ThreePtFGMade() != '' && ThreePtFGMade() != null">
+                            <div class="col-4">Three Point FG Made</div><div class="col-8" data-bind="text: ThreePtFGMade"></div>
                         </div>
-                        <div class="row border-bottom g-2" data-bind="visible: School() != '' && School() != null">
-                            <div class="col-2">School</div>
-                            <div class="col-10"><a class="nav-link" data-bind="text: School "></a></div>
+                        <div class="row border-bottom g-2" data-bind="visible: ThreePtFGAttempts() != '' && ThreePtFGAttempts() != null">
+                            <div class="col-4">Three Point FG Attempts</div><div class="col-8" data-bind="text: ThreePtFGAttempts"></div>
+                        </div>
+                        <div class="row border-bottom g-2" data-bind="visible: ThreePtFGPercentage() != '' && ThreePtFGPercentage() != null">
+                            <div class="col-4">Three Point FG Percentage</div><div class="col-8" data-bind="text: ThreePtFGPercentage() + '%'"></div>
+                        </div>
+                        <div class="row border-bottom g-2" data-bind="visible: FTMade() != '' && FTMade() != null">
+                            <div class="col-4">FT Made</div><div class="col-8" data-bind="text: FGMade"></div>
+                        </div>
+                        <div class="row border-bottom g-2" data-bind="visible: FTAttempts() != '' && FTAttempts() != null">
+                            <div class="col-4">FT Attempts</div><div class="col-8" data-bind="text: FGAttempts"></div>
+                        </div>
+                        <div class="row border-bottom g-2" data-bind="visible: FTPercentage() != '' && FTPercentage() != null">
+                            <div class="col-4">FT Percentage</div><div class="col-8" data-bind="text: FTPercentage() + '%'"></div>
+                        </div>
+                        <div class="row border-bottom g-2" data-bind="visible: OffensiveRebounds() != '' && OffensiveRebounds() != null">
+                            <div class="col-4">Offensive Rebounds</div><div class="col-8" data-bind="text: OffensiveRebounds"></div>
+                        </div>
+                        <div class="row border-bottom g-2" data-bind="visible: DefensiveRebounds() != '' && DefensiveRebounds() != null">
+                            <div class="col-4">Defensive Rebounds</div><div class="col-8" data-bind="text: DefensiveRebounds"></div>
+                        </div>
+                        <div class="row border-bottom g-2" data-bind="visible: Rebounds() != '' && Rebounds() != null">
+                            <div class="col-4">Rebounds</div><div class="col-8" data-bind="text: Rebounds"></div>
+                        </div>
+                        <div class="row border-bottom g-2" data-bind="visible: Assists() != '' && Assists() != null">
+                            <div class="col-4">Assists</div><div class="col-8" data-bind="text: Assists"></div>
+                        </div>
+                        <div class="row border-bottom g-2" data-bind="visible: Steals() != '' && Steals() != null">
+                            <div class="col-4">Steals</div><div class="col-8" data-bind="text: Steals"></div>
+                        </div>
+                        <div class="row border-bottom g-2" data-bind="visible: Blocks() != '' && Blocks() != null">
+                            <div class="col-4">Blocks</div><div class="col-8" data-bind="text: Blocks"></div>
+                        </div>
+                        <div class="row border-bottom g-2" data-bind="visible: Turnovers() != '' && Turnovers() != null">
+                            <div class="col-4">Turnovers</div><div class="col-8" data-bind="text: Turnovers"></div>
+                        </div>
+                        <div class="row border-bottom g-2" data-bind="visible: PersonalFouls() != '' && PersonalFouls() != null">
+                            <div class="col-4">Personal Fouls</div><div class="col-8" data-bind="text: PersonalFouls"></div>
+                        </div>
+                        <div class="row border-bottom g-2" data-bind="visible: PointsScored() != '' && PointsScored() != null">
+                            <div class="col-4">Points Scored</div><div class="col-8" data-bind="text: PointsScored"></div>
+                        </div>
+                        <div class="row border-bottom g-2" data-bind="visible: Efficency() != '' && Efficency() != null">
+                            <div class="col-4">Efficency</div><div class="col-8" data-bind="text: Efficency"></div>
+                        </div>
+                        <div class="row border-bottom g-2" data-bind="visible: AST_TOV() != '' && AST_TOV() != null">
+                            <div class="col-4">AST_TOV</div><div class="col-8" data-bind="text: AST_TOV"></div>
+                        </div>
+                        <div class="row border-bottom g-2" data-bind="visible: STL_TOV() != '' && STL_TOV() != null">
+                            <div class="col-4">STL_TOV</div><div class="col-8" data-bind="text: STL_TOV"></div>
                         </div>
                     </div>
                 </div>
