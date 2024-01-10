@@ -156,8 +156,8 @@
                     <div class="container">
                         <div class="row border-bottom g-2"><h5 class="col-12 col-lg-3 col-xl-2" data-bind="text: Seasontype"></h5><div class="d-none d-lg-block col-lg-5 col-xl-7"></div><button class="btn col-12 col-lg-4 col-xl-3 bg-primary" style="margin-bottom: 10px; color: white" id="Seasonchanger" data-bind="text: 'Mudar para ' + Seasontype()"></button></div>
                         <div class="row border-bottom g-2" style="margin: 10px">
-                            <img class="img-thumbnail profile mx-auto" data-bind="attr:{src: Photo}" style="margin: 10px">
-                            <a class="col-12 col-lg-4  mx-auto" data-bind="attr: { href:'./teamsDetails.html?id=' + TeamId() + '&acronimo=' + Acronym() }"><img class="img-thumbnail col-12" data-bind="attr:{src: Logo, title: Team, alt: Team}" style="margin: 10px; height: 320px"></a>
+                            <img class="img-thumbnail profile mx-auto" data-bind="attr:{src: Photo}" style="margin: 10px;">
+                            <a class="mx-auto col-12 col-lg-4 " data-bind="attr: { href:'./teamsDetails.html?id=' + TeamId() + '&acronimo=' + Acronym() }"><img class="img-thumbnail col-12" data-bind="attr:{src: Logo, title: Team, alt: Team}" style="margin: 10px; height: 320px; object-fit: cover; background-position: center center; background-repeat: no-repeat; background-size: cover; margin:auto;"></a>
                         </div>
                         <div class="row border-bottom g-2" data-bind="visible: Rank() != null && Rank()!= ''">
                             <div class="col-4">Rank</div><div class="col-8" data-bind="text: Rank"></div>
