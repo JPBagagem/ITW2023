@@ -116,16 +116,19 @@ var vm = function () {
             if (stats.FGPercentage != null && String(stats.FGPercentage).includes(',')){
                 self.FGPercentage((parseFloat(stats.FGPercentage.replace(',', '.')) * 100).toFixed(1));}
             else if (stats.FGPercentage != null){self.FGPercentage((parseFloat(stats.FGPercentage) * 100).toFixed(1));}
+            else{self.ThreePtFGPercentage(null)}
             self.ThreePtFGMade(stats.ThreePtFGMade);
             self.ThreePtFGAttempts(stats.ThreePtFGAttempts);
             if (stats.ThreePtFGPercentage != null && String(stats.ThreePtFGPercentage.includes(','))){
                 self.ThreePtFGPercentage((parseFloat(stats.ThreePtFGPercentage.replace(',', '.')) * 100).toFixed(1));}
             else if (stats.ThreePtFGPercentage != null){self.ThreePtFGPercentage((parseFloat(stats.ThreePtFGPercentage) * 100).toFixed(1));}
+            else{self.FGPercentage(null)}
             self.FTMade(stats.FTMade);
             self.FTAttempts(stats.FTAttempts);
             if (stats.FTPercentage != null && String(stats.FTPercentage).includes(',')){
                 self.FTPercentage((parseFloat(stats.FTPercentage.replace(',', '.')) * 100).toFixed(1));}
             else if (stats.FTPercentage != null){self.FTPercentage((parseFloat(stats.FTPercentage) * 100).toFixed(1));}
+            else{self.FTPercentage(null)}
             self.OffensiveRebounds(stats.OffensiveRebounds);
             self.DefensiveRebounds(stats.DefensiveRebounds);
             self.Rebounds(stats.Rebounds);
