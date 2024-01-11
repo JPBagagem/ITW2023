@@ -244,4 +244,13 @@ ul{
         left:4.5%;
         top: 300px;
     }
+    body{
+        margin: 56px 0 118px 0;
+    }
+}
+
+@media(max-width: 480px){
+    body{
+        margin: 56px 0 118px 0;
+    }
 }
