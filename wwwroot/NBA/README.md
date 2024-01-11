@@ -1,3 +1,5 @@
+Trabalho: José Bagagem 120141; Henrique Lopes 119954
+
 Adições feitas desde a apresentação:
 
 Gráfico do número de players com cores;
