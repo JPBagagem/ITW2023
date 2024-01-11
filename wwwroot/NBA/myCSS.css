@@ -247,6 +247,9 @@ ul{
     body{
         margin: 56px 0 118px 0;
     }
+    .opi{
+        display: none;
+    }
 }
 
 @media(max-width: 480px){
